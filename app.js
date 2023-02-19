@@ -27,6 +27,7 @@ menu_item.forEach((item) => {
 const darkModeToggle = document.querySelector("#dark-mode-toggle");
 const body = document.querySelector("body");
 let isNegro = false;
+const isMobile = navigator.userAgentData.mobile
 
 darkModeToggle.addEventListener("click", function () {
   var darkModeToggleIcon = document.getElementById("dark-mode-toggle-icon");
@@ -39,4 +40,17 @@ darkModeToggle.addEventListener("click", function () {
     isNegro = true;
   }
   body.classList.toggle("dark-mode");
+  
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  if(isMobile){
+    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal")
+    for(var i = 0; i<Elements.length; i++){
+      Elements[i].style.transform = 'translate(-61.5px, -20px)';
+    }
+  }
+  if(!isMobile){
+    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal")
+  }  
 });
