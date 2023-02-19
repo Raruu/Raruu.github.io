@@ -276,7 +276,7 @@ p {
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 20px;
+  padding: 00px 20px;
 }
 #about .col-left {
   width: 250px;
@@ -317,9 +317,16 @@ p {
   border: 7px solid crimson;
   z-index: -1;
 }
-#about .space-of-design{
-  transform: translate(0px,150px);
+#space-of-design .space-of-design{
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
+#space-of-design .highlightmargin{
+  padding: 75px 0px;
+  align-self: center;
+}
+
 /* End About Section */
 
 /* contact Section */
