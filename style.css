@@ -70,16 +70,6 @@ p {
 .brand h1 span {
   color: crimson;
 }
-.btn-transparent{
-  background: none;
-  fill:rgb(255, 255, 255);
-  border: none;
-  transform: translate(00px, 5px);
-}
-.ic-toggled-dark{
-  margin-top: 00px;
-  top: 00px;
-}
 
 /* Header section */
 #header {
@@ -205,6 +195,12 @@ p {
 }
 #header .hamburger.active .bar::after {
   top: 0;
+}
+#header .btn-transparent{
+  background: none;
+  fill:rgb(255, 255, 255);
+  border: none;
+  transform: translate(00px, 5px);
 }
 /* End Header section */
 
