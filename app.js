@@ -44,6 +44,7 @@ darkModeToggle.addEventListener("click", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function() {
+  form.reset();
   if(isMobile){
     var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal")
     for(var i = 0; i<Elements.length; i++){
