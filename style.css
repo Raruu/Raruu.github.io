@@ -154,7 +154,7 @@ p {
   justify-content: center;
   z-index: 100;
   cursor: pointer;
-  transform: scale(0.8) translate(20px,0px);
+  transform: scale(0.8) translate(20px, 0px);
   margin-right: 20px;
 }
 #header .hamburger:after {
@@ -196,9 +196,9 @@ p {
 #header .hamburger.active .bar::after {
   top: 0;
 }
-#header .btn-transparent{
+#header .btn-transparent {
   background: none;
-  fill:rgb(255, 255, 255);
+  fill: rgb(255, 255, 255);
   border: none;
   transform: translate(00px, 5px);
 }
@@ -305,7 +305,7 @@ p {
   width: 100%;
   position: relative;
   border: 10px solid white;
-  transform: translate(0px,-20px);
+  transform: translate(0px, -20px);
 }
 #about .col-left .about-img::after {
   content: "";
@@ -317,12 +317,12 @@ p {
   border: 7px solid crimson;
   z-index: -1;
 }
-#space-of-design .space-of-design{
+#space-of-design .space-of-design {
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-#space-of-design .highlightmargin{
+#space-of-design .highlightmargin {
   padding: 75px 0px;
   align-self: center;
 }
@@ -624,4 +624,3 @@ body.dark-mode h1 {
 body.dark-mode p {
   color: #ffffff; /* white in dark mode */
 }
-
