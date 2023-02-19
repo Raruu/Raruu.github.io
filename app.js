@@ -39,19 +39,38 @@ darkModeToggle.addEventListener("click", function () {
     darkModeToggleIcon.innerHTML = '<img src="./img/sun.svg"/>';    
     isNegro = true;
   }
-  body.classList.toggle("dark-mode");
-  
+  body.classList.toggle("dark-mode");  
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-  form.reset();
+document.addEventListener("DOMContentLoaded", function() {  
   if(isMobile){
-    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal")
+    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal");
     for(var i = 0; i<Elements.length; i++){
       Elements[i].style.transform = 'translate(-61.5px, -20px)';
     }
   }
   if(!isMobile){
-    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal")
+    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal");
+    for(var i = 0; i<Elements.length; i++){
+      Elements[i].style.transform = 'translate(-150px, -20px)';
+    }
   }  
+});
+
+// Create a MediaQueryList object for the viewport size
+var viewportSize = window.matchMedia("(max-width: 768px)");
+
+// Add a listener for changes in the viewport size
+viewportSize.addListener(function() {
+  if (viewportSize.matches) {
+    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal")
+    for(var i = 0; i<Elements.length; i++){
+      Elements[i].style.transform = 'translate(-61.5px, -20px)';
+    }
+  } else {
+    var Elements = document.querySelectorAll("#about .col-left .about-img-horizontal");
+    for(var i = 0; i<Elements.length; i++){
+      Elements[i].style.transform = 'translate(-150px, -20px)';
+    }
+  }
 });
