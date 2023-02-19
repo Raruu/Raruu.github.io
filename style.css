@@ -70,6 +70,16 @@ p {
 .brand h1 span {
   color: crimson;
 }
+.btn-transparent{
+  background: none;
+  fill:rgb(255, 255, 255);
+  border: none;
+  transform: translate(00px, 5px);
+}
+.ic-toggled-dark{
+  margin-top: 00px;
+  top: 00px;
+}
 
 /* Header section */
 #header {
@@ -339,7 +349,7 @@ p {
 
 /* About Section */
 #about .about {
-  flex-direction: column-reverse;
+  flex-direction: column;
   text-align: center;
   max-width: 1200px;
   margin: 0 auto;
@@ -377,7 +387,7 @@ p {
   content: "";
   position: absolute;
   left: -33px;
-  top: 19px;
+  top: 10px;
   height: 98%;
   width: 98%;
   border: 7px solid crimson;
@@ -639,3 +649,44 @@ p {
   }
 }
 /* End  Media Query For Desktop */
+
+/* Light mode styles */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Light mode styles */
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Font color styles */
+h1 {
+  color: #000000; /* black in light mode */
+}
+
+p {
+  color: #000000; /* black in light mode */
+}
+
+body.dark-mode h1 {
+  color: #ffffff; /* white in dark mode */
+}
+
+body.dark-mode p {
+  color: #ffffff; /* white in dark mode */
+}

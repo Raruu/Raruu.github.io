@@ -23,3 +23,20 @@ menu_item.forEach((item) => {
     mobile_menu.classList.toggle("active");
   });
 });
+
+const darkModeToggle = document.querySelector("#dark-mode-toggle");
+const body = document.querySelector("body");
+let isNegro = false;
+
+darkModeToggle.addEventListener("click", function () {
+  var darkModeToggleIcon = document.getElementById("dark-mode-toggle-icon");
+  if(isNegro){
+    darkModeToggleIcon.innerHTML = '<img src="./img/moon.svg"/>';
+    isNegro = false;
+  }
+  else{
+    darkModeToggleIcon.innerHTML = '<img src="./img/sun.svg"/>';    
+    isNegro = true;
+  }
+  body.classList.toggle("dark-mode");
+});
