@@ -382,6 +382,7 @@ p {
   width: 100%;
   position: relative;
   border: 10px solid white;
+  transform: translate(0px,-20px);
 }
 #about .col-left .about-img::after {
   content: "";
