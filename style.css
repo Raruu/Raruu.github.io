@@ -2,8 +2,53 @@
     padding: 0;
     margin: 0;
     font-family: 'Pangolin', cursive;
+    overflow-x: hidden;
 }
 /**/
+.startup{
+    z-index: 10;
+    text-align: center;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    font-size: 4rem;
+    color: #fff;
+    background-color: black;
+    height: 100vh;
+    width: 100%;
+    animation: background_color_to_white 1s ease forwards, text_reveal_block_ahalf 1s ease, set_opacity_to_zero 1s ease forwards, set_to_visiblity_hidden 0.1s ease forwards;
+    animation-delay: 0.5s, 1s, 1s, 1.5s;
+}
+.startup h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);   
+    opacity: 0%; 
+    animation: set_opacity_to_one 0.5s ease forwards, set_opacity_to_zero 0.25s ease forwards;
+    animation-delay: 0s, 0.75s;
+}
+.startup h1 span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    animation: text_reveal_block 1s ease forwards;
+    animation-delay: 0.5s;
+    background-color: #fff; 
+    
+}
+.startup h2{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);   
+    opacity: 0%; 
+    animation: set_opacity_to_one 0.5s ease forwards;
+    animation-delay: 0.7s;
+    color: black;
+}
 .header{
     width: 100%;
     min-height: 100vh;
@@ -40,6 +85,7 @@ nav{
 nav img{
     width: 150px;
     height: auto;
+    margin-top: -5%;
 }
 nav a{
     color: #ffffff;
@@ -127,12 +173,61 @@ nav .material-symbols-outlined{
     nav .material-symbols-outlined{
         display: block;
         margin: 10px;   
+        margin-top: 7%;
+        margin-right: 5%;
         right: 0;    
         position: absolute; 
     }
     .nav-links ul{
-        padding: 10%;
+        margin: 10%;
         position: absolute;
         top: 2.5%;
     }
+}
+
+.aboutme{
+    width: 100%;
+    min-height: 100vh;
+    text-align: center;
+    padding: 30px 0px;
+}
+
+/* Keyframes */
+@keyframes text_reveal_block {
+    0%{
+        width: 0;
+        left: 0;
+    }
+    50%{
+        width: 100%;
+        left: 0;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+}
+@keyframes text_reveal_block_ahalf {
+    50%{
+        width: 100%;
+    }
+    100%{
+        width: 0;
+        left: 100%;
+    }
+}
+@keyframes set_opacity_to_zero {
+    100%{opacity: 0;}
+}
+@keyframes set_opacity_to_one {
+    100%{opacity: 100%;}
+}
+@keyframes background_color_to_white {
+    100%{background-color: #ffffff;}
+}
+@keyframes color_to_white {
+    100%{color: #ffffff;}
+}
+@keyframes set_to_visiblity_hidden{
+    100%{visibility: hidden;}
 }
