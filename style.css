@@ -3,8 +3,9 @@
     margin: 0;
     font-family: 'Pangolin', cursive;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
-/**/
+/* startup */
 .startup{
     z-index: 10;
     text-align: center;
@@ -49,31 +50,15 @@
     animation-delay: 0.7s;
     color: black;
 }
-.header{
-    width: 100%;
-    min-height: 100vh;
-    background-image: radial-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.7)), url(Img/IdBackground.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
+
+@media(max-width: 700px) {
+    .startup h2{
+        font-size: 4rem;
+        writing-mode: vertical-lr;
+        text-orientation: upright;
+    }
 }
-.primary-btn{
-    display: inline-block;
-    text-decoration: none;
-    color: #fff;
-    border: 1px solid #fff;
-    padding: 12px 34px;
-    position: relative;
-    background: transparent;
-    cursor: pointer;
-    transition: 0.5s;
-}
-.primary-btn:hover{
-    background: white;
-    color: black;
-    transition: 0.5s;
-}
+/* startup */
 
 /* Navigation Home */
 nav{
@@ -128,28 +113,7 @@ nav .material-symbols-outlined{
     cursor: pointer;
 }
 
-/* Home Cover */
-.home-text-box{
-    text-align: center;
-    color: #ffffff;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
-}
-.home-text-box h1{
-    font-size: 64px;
-}
-.home-text-box p{
-    font-size: large;
-    margin: 10px 0px 30px;
-}
-
-
 @media(max-width: 700px){
-    .home-text-box h1{
-        font-size: 17px;
-    }
     nav img{
         width: 75px;
     }
@@ -184,13 +148,128 @@ nav .material-symbols-outlined{
         top: 2.5%;
     }
 }
+/* Navigation Home */
 
+/* Home Cover */
+.header{
+    width: 100%;
+    min-height: 100vh;
+    background-image: radial-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.7)), url(Img/IdBackground.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.primary-btn{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    position: relative;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.primary-btn:hover{
+    background: white;
+    color: black;
+    transition: 0.5s;
+}
+.home-text-box{
+    text-align: center;
+    color: #ffffff;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+}
+.home-text-box h1{
+    font-size: 64px;
+}
+.home-text-box p{
+    font-size: large;
+    margin: 10px 0px 30px;
+}
+@media(max-width: 700px){
+    .home-text-box h1{
+        font-size: 17px;
+    }
+}
+/* Home Cover */
+
+/* About Me*/
 .aboutme{
     width: 100%;
     min-height: 100vh;
     text-align: center;
     padding: 30px 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+.aboutme video{
+    height: 100vh;
+    width: 100%;
+   
+}
+/* About Me*/
+
+/* Footer */
+.footer{
+    width: 100%;
+    min-height: 10vh;
+    text-align: center;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(4, 9, 30, 0.2)), url(Img/Raruu.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    padding: 25px 0px;
+}
+.footer .fa-brands{
+    display: block;
+    margin: 10px;
+    font-size: 50px;
+}
+
+.footer ul li{
+    display: inline-block;
+    position: relative;
+    list-style: none;
+    padding: 0 20px;
+}
+.footer ul li a svg{
+    position: relative;
+    width: 50px;
+    height: 80px;
+}
+.footer ul li a svg:hover{
+    filter: drop-shadow(0 0 5px white) drop-shadow(0 0 2.5px #ff4da6);
+    color: #9bdfff;
+    transition: 0.25s;
+}
+.footer ul li a{
+    text-decoration: none;
+    color: black;
+    padding: 10px 10px;
+    transition: 0.25s;
+}
+.footer ul li a#asvg{
+    padding: 0px 0;
+}
+.footer ul li a:hover{
+    color: #9bdfff;
+    text-shadow:  0 0 20px #fff, 0 0 10px #ff4da6;
+    transition: 0.25s;
+}
+@media(max-width: 700px){
+    .footer ul li {
+        padding: 0px 10px;
+    }
+    .footer ul li a{
+        padding: 0px 10px;
+    }
+}
+/* Footer */
 
 /* Keyframes */
 @keyframes text_reveal_block {
@@ -231,3 +310,4 @@ nav .material-symbols-outlined{
 @keyframes set_to_visiblity_hidden{
     100%{visibility: hidden;}
 }
+/* Keyframes */
