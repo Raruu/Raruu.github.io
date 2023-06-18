@@ -11,46 +11,48 @@
     <script src="https://kit.fontawesome.com/2f4acd67b7.js" crossorigin="anonymous"></script>
 </head>
     <section class="startup">
-        <pre><h1>   「Raruu」   <span></span></h1></pre>
-        
+        <pre><h1>   「Raruu」   <span></span></h1></pre>        
         <h2>鏡美らるー</h2>
     </section>
 
 <!-- Header -->
-    <section class="header" id="refHeader">
+    <header class="header" id="refHeader">
         <nav>
-            <a href="index.html">
-                <img src="Img/hertaa1.gif"/>
+            <a href="index.html" id="idNavRaruu_link">
+                <img src="Img/hertaa1.gif" id="idNavRaruu_img"/>
                 Raruu
             </a>
             <div class="nav-links" id="navLinks">
                 <span class="material-symbols-outlined" onclick="hideMenu()">close</span>         
                 <ul>
-                    <li><a href="#refHeader">HOME</a></li>
+                    <li><a href="#home-text-box">HOME</a></li>
                     <li><a href="#refAboutme">ABOUT ME</a></li>
                 </ul>
             </div>
             <span class="material-symbols-outlined" onclick="showMenu()">menu</span>  
-        </nav>
-
-        <div class="home-text-box">
-            <h1>「ようこそ」</h1>
-            <p>My private page on github</p>
-            <a href="#refAboutme" class="primary-btn">Look what's in here</a>
-        </div>
-    </section>
+        </nav>        
+    </header>
 
 <!-- About Me -->
-<section class="aboutme" id="refAboutme">
-    <h2>About Me</h2>
-    <p>I have several online social media platforms.</p>
-    <h1>I'LL WORKING FOR THIS</h1>
-    <video autoplay loop muted >
-        <source src="Img/blue-archive-shirasu-azusa.mp4" type="video/mp4">
-    </video>
+<section class="body">
+    <div id="home-text-box">
+        <h1>「ようこそ」</h1>
+        <p>My private page on github</p>
+        <a href="#refAboutme" class="primary-btn">Look what's in here</a>
+    </div>
+    
+    <div id="refAboutme">
+        <h2>About Me</h2>
+        <p>I have several online social media platforms.</p>
+        <h1>I'LL WORKING FOR THIS</h1>
+        <video autoplay loop muted >
+            <source src="Img/blue-archive-shirasu-azusa.mp4" type="video/mp4">
+        </video>
+    </div>
+    
     
 </section>
-<section class="footer">
+<footer class="footer">
     <ul>
         <li><a href="https://www.instagram.com/hraruraruraru/" class="fa-brands fa-instagram"></a></li>
         <li><a href="https://github.com/Raruu" class="fa-brands fa-github"></a></li>
@@ -61,6 +63,6 @@
     
     <h3>鏡美らるー 「Raruu」</h3>
     <h4>widisaputra757@gmail.com</h4>
-</section>
+</footer>
     <script src="app.js"></script>
 </html>
