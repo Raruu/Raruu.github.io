@@ -224,7 +224,6 @@ nav .material-symbols-outlined{
     position: relative;
     z-index: 1;
     width: 100%;
-    margin-top: -800px;
     transition: 0.5s;
     opacity: 0%;
     pointer-events: none;

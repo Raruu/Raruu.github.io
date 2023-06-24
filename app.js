@@ -50,7 +50,8 @@ checkScreenWidth();
 var last_Nav_background;
 $('.nav-links').on("mouseenter",function() {
     last_Nav_background = navLinks.style.getPropertyValue("background-color");
-    $(this).css("background-color", "black")
+    if(window.scrollY >= 1000){$(this).css("background-color", "black");}
+    
 });
 $('.nav-links').on("mouseleave",function() {$(this).css("background-color", last_Nav_background)});
 
@@ -72,25 +73,27 @@ function parallax_cloud_array(){
 parallax_cloud_array();
 
 // Parallax-Scroll
+let refAboutme = document.getElementById("refAboutme");
 let homeTextBox = document.getElementById("home-text-box");
 window.addEventListener('scroll', homeTextBox_Scroll);
 function homeTextBox_Scroll(param = '0'){
     if(param == '1'){
-        window.scrollTo(0, 0);
         event.preventDefault(); 
+        window.scrollTo(0, 0);
         return;
     }
     if(param == '2'){
-        window.scrollTo(0, 1000);
         event.preventDefault(); 
+        window.scrollTo(0, 1000);      
         return;
     }
     var scrollPosition = clamp(window.scrollY, 0, 1000)
     homeTextBox.style.marginTop = scrollPosition+'px';
+    refAboutme.style.marginTop = '-'+clamp(window.scrollY, 0, 800)+'px';
     console.log(scrollPosition);
 }
 // Aboutme
-let refAboutme = document.getElementById("refAboutme");
+
 window.addEventListener('scroll', () => {
     if(window.scrollY >= 1000){
         refAboutme.style.pointerEvents = "all";
