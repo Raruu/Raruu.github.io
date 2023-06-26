@@ -41,7 +41,7 @@ window.addEventListener('scroll', () =>{
     if(!mobileMode){
         if(window.scrollY > 800){
             navLinks.style.backdropFilter = `blur(32px)`;
-            navLinks.style.boxShadow = `0px 0px 20px rgba(129, 124, 124, 0.2)`;
+            navLinks.style.boxShadow = `0px 0px 20px rgba(27, 26, 26, 0.2)`;
         }
         else {
             navLinks.style.backdropFilter = ``;
@@ -56,11 +56,12 @@ window.addEventListener('scroll', () =>{
 // Nav Hover
 var last_Nav_background;
 $('.nav-links').on("mouseenter",function() {
-    last_Nav_background = navLinks.style.getPropertyValue("background-color");
-    if(window.scrollY >= 1000){$(this).css("background-color", "black");}
-    
+    if(!mobileMode){
+        last_Nav_background = navLinks.style.getPropertyValue("background-color");
+        if(window.scrollY >= 1000){$(this).css("background-color", "black");}
+    }    
 });
-$('.nav-links').on("mouseleave",function() {$(this).css("background-color", last_Nav_background)});
+$('.nav-links').on("mouseleave",function() {if(!mobileMode)$(this).css("background-color", last_Nav_background)});
 
 var lastSelectedNav = 0;
 function setSelectedNav(index = 1){
