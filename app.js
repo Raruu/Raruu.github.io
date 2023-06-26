@@ -75,7 +75,7 @@ setSelectedNav();
 // Parallax
 function parallax_cloud_array(){
     var rotated = false;
-    for(var i = 0; i < 4; i++){
+    for(var i = 0; i < 2; i++){
         var img = document.createElement('img');
         img.src = "Img/cloud.png";
         if(rotated){

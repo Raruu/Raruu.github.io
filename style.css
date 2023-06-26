@@ -124,6 +124,35 @@ nav a:hover{
 .nav-links ul li:hover:after{
     width: 100%;
 }
+.nav-social-links{
+    opacity: 0%;
+    transition: 0.5s;
+    z-index: -1;
+}
+.nav-social-links ul li{
+    display: inline-block;
+    position: relative;
+    list-style: none;
+}
+.nav-social-links .fa-brands{
+    display: block;
+    margin: 0px;
+    font-size: 25px;
+}
+.nav-social-links ul li a{
+    text-decoration: none;
+    padding: 10px 10px;
+    transition: 0.25s;
+}
+.nav-social-links ul li a svg{
+    position: relative;
+    width: 23px;
+    height: 20px;
+    bottom: -3px;
+}
+.nav-social-links ul li a.ic-pixiv{
+    padding: 0px 10px;
+}
 nav .material-symbols-outlined{
     color: #fff;
     display: none;
@@ -201,7 +230,7 @@ nav .material-symbols-outlined{
     text-align: center;
     color: #ffffff;
     min-height: 100vh;
-
+    background-attachment: fixed;
     background-image: radial-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.7)), url(Img/IdBackground.jpg);
     background-position: center;
     background-repeat: no-repeat;
@@ -281,7 +310,6 @@ nav .material-symbols-outlined{
     margin: 10px;
     font-size: 50px;
 }
-
 .footer ul li{
     display: inline-block;
     position: relative;
