@@ -4,11 +4,13 @@ function clamp(number, min, max){
 // VARIABLE
 var mobileMode = false;
 let refAboutme = document.getElementById("refAboutme");
+let refAboutme_Background = document.getElementById("refAboutme-background");
 let homeTextBox = document.getElementById("home-text-box");
 let navLinks = document.getElementById("navLinks");
 let idNavRaruu_img = document.getElementById("idNavRaruu_img");
 let idNavRaruu_link = document.getElementById("idNavRaruu_link");
 let parallax_container = document.getElementsByClassName("parallax")[0];
+let navSocialLinks = document.getElementById("nav-social-links");
 
 // NavMenu
 function showMenu(){
@@ -58,7 +60,7 @@ var last_Nav_background;
 $('.nav-links').on("mouseenter",function() {
     if(!mobileMode){
         last_Nav_background = navLinks.style.getPropertyValue("background-color");
-        if(window.scrollY >= 1000){$(this).css("background-color", "black");}
+        if(window.scrollY >= 1000){$(this).css("background-color", "#051e3f");}
     }    
 });
 $('.nav-links').on("mouseleave",function() {if(!mobileMode)$(this).css("background-color", last_Nav_background)});
@@ -113,19 +115,33 @@ function homeTextBox_Scroll(param = '0'){
 }
 
 // Aboutme
+var aboutme_ScrollYValue;
+refAboutme_Background.addEventListener('transitionend', () => {
+    if(aboutme_ScrollYValue < 1000){
+        refAboutme.style.pointerEvents = "none";
+        refAboutme.style.opacity = "0%"; 
+    }
+});
 window.addEventListener('scroll', () => {
-    if(window.scrollY >= 1000){
+    aboutme_ScrollYValue = window.scrollY;
+    if(aboutme_ScrollYValue >= 1000){
         homeTextBox.style.transition = "0.5s";
         homeTextBox.style.opacity = "0%"; 
         refAboutme.style.pointerEvents = "all";
         refAboutme.style.opacity = "100%"; 
+        refAboutme_Background.style.blur = "blur(64px)";
+        refAboutme_Background.style.boxShadow = "0px 0px 15px black";
         setSelectedNav(2);
+        navSocialLinks.style.zIndex = 1;
+        navSocialLinks.style.opacity = "100%";
     }
-    else if (window.screenY < 1000){
+    else if (aboutme_ScrollYValue< 1000){
         homeTextBox.style.transition = "";
-        refAboutme.style.pointerEvents = "none";
-        refAboutme.style.opacity = "0%";
+        refAboutme_Background.style.blur = "blur(0px)";
+        refAboutme_Background.style.boxShadow = "0px 0px 0px black";        
         homeTextBox.style.opacity = "100%";
         setSelectedNav(1);
+        navSocialLinks.style.zIndex = -1;
+        navSocialLinks.style.opacity = "0%";
     }
 });
