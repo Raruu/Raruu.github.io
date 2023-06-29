@@ -129,15 +129,17 @@ window.addEventListener('scroll', () => {
         homeTextBox.style.opacity = "0%"; 
         refAboutme.style.pointerEvents = "all";
         refAboutme.style.opacity = "100%"; 
-        refAboutme_Background.style.blur = "blur(64px)";
+        refAboutme_Background.style.backdropFilter = "blur(32px)";
         refAboutme_Background.style.boxShadow = "0px 0px 15px black";
+        refAboutme_Background.style.width = "90%";
         setSelectedNav(2);
         navSocialLinks.style.zIndex = 1;
         navSocialLinks.style.opacity = "100%";
     }
     else if (aboutme_ScrollYValue< 1000){
         homeTextBox.style.transition = "";
-        refAboutme_Background.style.blur = "blur(0px)";
+        refAboutme_Background.style.backdropFilter = "blur(0px)";
+        refAboutme_Background.style.width = "0%";
         refAboutme_Background.style.boxShadow = "0px 0px 0px black";        
         homeTextBox.style.opacity = "100%";
         setSelectedNav(1);
