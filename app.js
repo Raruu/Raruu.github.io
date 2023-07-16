@@ -11,6 +11,7 @@ let idNavRaruu_img = document.getElementById("idNavRaruu_img");
 let idNavRaruu_link = document.getElementById("idNavRaruu_link");
 let parallax_container = document.getElementsByClassName("parallax")[0];
 let navSocialLinks = document.getElementById("nav-social-links");
+let video_arisu_dance = document.getElementById("arisu-dance");
 
 // NavMenu
 function showMenu(){
@@ -121,6 +122,9 @@ refAboutme_Background.addEventListener('transitionend', () => {
         refAboutme.style.pointerEvents = "none";
         refAboutme.style.opacity = "0%"; 
     }
+    if(aboutme_ScrollYValue >= 1000){  
+        video_arisu_dance.muted = false;
+    }
 });
 window.addEventListener('scroll', () => {
     aboutme_ScrollYValue = window.scrollY;
@@ -134,7 +138,7 @@ window.addEventListener('scroll', () => {
         refAboutme_Background.style.width = "90%";
         setSelectedNav(2);
         navSocialLinks.style.zIndex = 1;
-        navSocialLinks.style.opacity = "100%";
+        navSocialLinks.style.opacity = "100%";        
     }
     else if (aboutme_ScrollYValue< 1000){
         homeTextBox.style.transition = "";
@@ -145,5 +149,11 @@ window.addEventListener('scroll', () => {
         setSelectedNav(1);
         navSocialLinks.style.zIndex = -1;
         navSocialLinks.style.opacity = "0%";
+        video_arisu_dance.muted = true;
     }
+});
+
+window.addEventListener('click', () =>{
+    if(video_arisu_dance.paused && window.scrollY >= 100) video_arisu_dance.play();
+    
 });
