@@ -3,8 +3,18 @@
     margin: 0;
     font-family: 'Pangolin', cursive;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth;   
+    -webkit-text-size-adjust:none;
+    -ms-text-size-adjust:none;
+    -moz-text-size-adjust:none;
+    text-size-adjust:none;
 }
+@media only screen and (min-resolution: 120dpi){
+    .body{zoom: 1.25;}  
+    .startup{zoom: 1.25;}
+    :root{zoom: 0.8;}
+}
+
 /* startup */
 .startup{
     z-index: 1000;
@@ -51,7 +61,7 @@
     color: black;
 }
 
-@media(max-width: 700px) {
+@media only screen and (max-width: 700px) {
     .startup h2{
         font-size: 4rem;
         writing-mode: vertical-lr;
@@ -61,20 +71,20 @@
 /* startup */
 
 /* Header */
-#refHeader{
+.refHeader{
     width: 100%;    
     position: fixed;
     z-index: 10;
     overflow: hidden;
 }
-#refHeader nav{
+.refHeader nav{
     display: flex;
     justify-content: space-between;
     padding: 0% 6%;
     align-items: center;
     min-height: 50px;
 }
-#refHeader nav img{
+.refHeader nav img{
     width: 75px;
     height: auto;
     margin-top: -5%;
@@ -82,7 +92,7 @@
 nav a{
     color: #ffffff;
     text-decoration: none;
-    font-size: 50px;
+    font-size: 3rem;
     transition: 0.5s;
 }
 nav a:hover{
@@ -180,7 +190,7 @@ nav .material-symbols-outlined{
     overflow: hidden;
 }
 
-@media(max-width: 700px){
+@media only screen and (max-width: 700px){
     .nav-links ul li{
         display: block;
     }
@@ -246,7 +256,7 @@ nav .material-symbols-outlined{
     color: black;
     transition: 0.5s;
 }
-#home-text-box{
+.home-text-box{
     text-align: center;
     color: #ffffff;
     min-height: 100vh;
@@ -261,16 +271,16 @@ nav .material-symbols-outlined{
     flex-direction: column;
     z-index: 0;
 }
-#home-text-box h1{
+.home-text-box h1{
     font-size: 64px;
     font-family: 'Noto Sans JP', sans-serif;
 }
-#home-text-box p{
+.home-text-box p{
     font-size: large;
     margin: 10px 0px 30px;
 }
-@media(max-width: 700px){
-    #home-text-box h1{
+@media only screen and (max-width: 700px){
+    .home-text-box h1{
         font-size: 48px;
     }
 }
@@ -346,7 +356,7 @@ nav .material-symbols-outlined{
 .me-p{
     color: #9bdfff;
 }
-@media(max-width: 700px){
+@media only screen and (max-width: 700px){
     #refAboutme{
         
     }
@@ -394,7 +404,7 @@ nav .material-symbols-outlined{
     position: relative;
     width: 100%;
 }
-@media(max-width: 700px){
+@media only screen and (max-width: 700px){
     .parallax img{
         width: 150%;
     }
@@ -448,7 +458,7 @@ nav .material-symbols-outlined{
     text-shadow:  0 0 20px #fff, 0 0 10px #ff4da6;
     transition: 0.25s;
 }
-@media(max-width: 700px){
+@media only screen and (max-width: 700px){
     .footer ul li {
         padding: 0px 10px;
     }

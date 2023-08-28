@@ -1,3 +1,5 @@
+
+
 function clamp(number, min, max){
     return Math.max(min, Math.min(number, max));
 }
@@ -5,7 +7,7 @@ function clamp(number, min, max){
 var mobileMode = false;
 let refAboutme = document.getElementById("refAboutme");
 let refAboutme_Background = document.getElementById("refAboutme-background");
-let homeTextBox = document.getElementById("home-text-box");
+let homeTextBox = document.getElementsByClassName("home-text-box")[0];
 let navLinks = document.getElementById("navLinks");
 let idNavRaruu_img = document.getElementById("idNavRaruu_img");
 let idNavRaruu_link = document.getElementById("idNavRaruu_link");
@@ -157,3 +159,4 @@ window.addEventListener('click', () =>{
     if(video_arisu_dance.paused && window.scrollY >= 100) video_arisu_dance.play();
     
 });
+console.log("Inner Hegiht:" +window.innerHeight);
