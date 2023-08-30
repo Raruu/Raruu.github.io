@@ -8,7 +8,6 @@
     -ms-text-size-adjust:100%;
     -moz-text-size-adjust:none;
     text-size-adjust:none;
-
 }
 
 @media only screen and (min-resolution: 120dpi){
@@ -24,7 +23,7 @@
     .startup{zoom: 1.5;}
     :root{
         zoom: 0.67;
-        font-size: 8px
+        font-size: 16px
     }
 
 }
@@ -296,7 +295,7 @@ nav .material-symbols-outlined{
 }
 @media only screen and (max-width: 700px){
     .home-text-box h1{
-        font-size: 48px;
+        font-size: 3rem;
     }
 }
 /* Home Cover */
