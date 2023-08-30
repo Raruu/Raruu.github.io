@@ -5,14 +5,28 @@
     overflow-x: hidden;
     scroll-behavior: smooth;   
     -webkit-text-size-adjust:none;
-    -ms-text-size-adjust:none;
+    -ms-text-size-adjust:100%;
     -moz-text-size-adjust:none;
     text-size-adjust:none;
+
 }
+
 @media only screen and (min-resolution: 120dpi){
     .body{zoom: 1.25;}  
     .startup{zoom: 1.25;}
-    :root{zoom: 0.8;}
+    :root{
+        zoom: 0.8;
+        font-size: 12px;
+    }
+}
+@media only screen and (min-resolution: 144dpi){
+    .body{zoom: 1.5;}  
+    .startup{zoom: 1.5;}
+    :root{
+        zoom: 0.67;
+        font-size: 8px
+    }
+
 }
 
 /* startup */
@@ -23,7 +37,7 @@
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
-    font-size: 4rem;
+    font-size: 3rem;
     color: #fff;
     background-color: black;
     height: 100vh;
@@ -118,7 +132,7 @@ nav a:hover{
 .nav-links ul li a{
     color: #fff;
     text-decoration: none;
-    font-size: medium;
+    font-size: 1rem;
 }
 .nav-links ul li a:hover{
     color: #9bdfff;
@@ -196,7 +210,7 @@ nav .material-symbols-outlined{
     }
     .nav-links{
         position: fixed;
-        height: 100vh;
+        min-height: 200vh;
         width: 175px;
         top: 0;
         right: -200px;
@@ -260,6 +274,7 @@ nav .material-symbols-outlined{
     text-align: center;
     color: #ffffff;
     min-height: 100vh;
+    max-height: 100vh;
     background-attachment: fixed;
     background-image: radial-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.7)), url(Img/IdBackground.jpg);
     background-position: center;
@@ -272,11 +287,11 @@ nav .material-symbols-outlined{
     z-index: 0;
 }
 .home-text-box h1{
-    font-size: 64px;
+    font-size: 4rem;
     font-family: 'Noto Sans JP', sans-serif;
 }
 .home-text-box p{
-    font-size: large;
+    font-size: 1rem;
     margin: 10px 0px 30px;
 }
 @media only screen and (max-width: 700px){
@@ -323,7 +338,7 @@ nav .material-symbols-outlined{
     max-height: 100%;
     margin-left: 40px;
 }
-#aboutMe-general{
+.aboutMe-general{
     position: relative;
     top: -225px;
     left: 60px;
@@ -331,20 +346,20 @@ nav .material-symbols-outlined{
     display: flex;
     flex-direction: column;
 }
-#aboutMe-general h1{
-    font-size: 60px;
+.aboutMe-general h1{
+    font-size: 3.75rem;
     position: relative;
     padding-right: 100px;
 }
-#aboutMe-general h2{
-    font-size: 30px;
+.aboutMe-general h2{
+    font-size: 1.875rem;
     position: relative;
     left: 1%;
     text-align: start;
     max-width: 70%;
 }
-#aboutMe-general p{
-    font-size: 20px;
+.aboutMe-general p{
+    font-size: 1.25rem;
     position: relative;
     left: 1%;
     max-width: 70%;
@@ -357,9 +372,6 @@ nav .material-symbols-outlined{
     color: #9bdfff;
 }
 @media only screen and (max-width: 700px){
-    #refAboutme{
-        
-    }
     #refAboutme-background{
         flex-direction: column;   
            

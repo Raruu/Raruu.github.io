@@ -1,5 +1,3 @@
-
-
 function clamp(number, min, max){
     return Math.max(min, Math.min(number, max));
 }
@@ -94,6 +92,7 @@ function parallax_cloud_array(){
 parallax_cloud_array();
 
 // Parallax-Scroll
+var aboutme_ShowAtPosition = 1000 / window.devicePixelRatio;
 window.addEventListener('scroll', homeTextBox_Scroll);
 function homeTextBox_Scroll(param = '0'){
     if(param == '1'){
@@ -106,31 +105,32 @@ function homeTextBox_Scroll(param = '0'){
         window.scrollTo(0, 1000);      
         return;
     }
-    var scrollPosition = clamp(window.scrollY, 0, 1000)
+    var scrollPosition = clamp(window.scrollY, 0, aboutme_ShowAtPosition)
     homeTextBox.style.marginTop = scrollPosition+'px';
     var refAboutme_showAt;
     if(mobileMode){
         refAboutme_showAt = '-'+clamp(window.scrollY, 0, 700)+'px';
     }
-    else {refAboutme_showAt = '-'+clamp(window.scrollY, 0, 800)+'px';}
+    else {refAboutme_showAt = '-'+clamp(window.scrollY, 0, 800 - (1000-aboutme_ShowAtPosition))+'px';}
     refAboutme.style.marginTop = refAboutme_showAt;
     console.log(scrollPosition);
 }
 
 // Aboutme
 var aboutme_ScrollYValue;
+
 refAboutme_Background.addEventListener('transitionend', () => {
-    if(aboutme_ScrollYValue < 1000){
+    if(aboutme_ScrollYValue < aboutme_ShowAtPosition){
         refAboutme.style.pointerEvents = "none";
         refAboutme.style.opacity = "0%"; 
     }
-    if(aboutme_ScrollYValue >= 1000){  
+    if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){  
         video_arisu_dance.muted = false;
     }
 });
 window.addEventListener('scroll', () => {
     aboutme_ScrollYValue = window.scrollY;
-    if(aboutme_ScrollYValue >= 1000){
+    if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){
         homeTextBox.style.transition = "0.5s";
         homeTextBox.style.opacity = "0%"; 
         refAboutme.style.pointerEvents = "all";
@@ -142,7 +142,7 @@ window.addEventListener('scroll', () => {
         navSocialLinks.style.zIndex = 1;
         navSocialLinks.style.opacity = "100%";        
     }
-    else if (aboutme_ScrollYValue< 1000){
+    else if (aboutme_ScrollYValue< aboutme_ShowAtPosition){
         homeTextBox.style.transition = "";
         refAboutme_Background.style.backdropFilter = "blur(0px)";
         refAboutme_Background.style.width = "0%";
@@ -160,3 +160,4 @@ window.addEventListener('click', () =>{
     
 });
 console.log("Inner Hegiht:" +window.innerHeight);
+console.log(1/window.devicePixelRatio);
