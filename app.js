@@ -92,7 +92,7 @@ function parallax_cloud_array(){
 parallax_cloud_array();
 
 // Parallax-Scroll
-var aboutme_ShowAtPosition = 1000 / window.devicePixelRatio;
+var aboutme_ShowAtPosition = !mobileMode ? 1000 / window.devicePixelRatio : 1000;
 window.addEventListener('scroll', homeTextBox_Scroll);
 function homeTextBox_Scroll(param = '0'){
     if(param == '1'){
@@ -118,7 +118,6 @@ function homeTextBox_Scroll(param = '0'){
 
 // Aboutme
 var aboutme_ScrollYValue;
-
 refAboutme_Background.addEventListener('transitionend', () => {
     if(aboutme_ScrollYValue < aboutme_ShowAtPosition){
         refAboutme.style.pointerEvents = "none";
@@ -160,4 +159,4 @@ window.addEventListener('click', () =>{
     
 });
 console.log("Inner Hegiht:" +window.innerHeight);
-console.log(1/window.devicePixelRatio);
+console.log(aboutme_ShowAtPosition);
