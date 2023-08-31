@@ -12,6 +12,8 @@ let idNavRaruu_link = document.getElementById("idNavRaruu_link");
 let parallax_container = document.getElementsByClassName("parallax")[0];
 let navSocialLinks = document.getElementById("nav-social-links");
 let video_arisu_dance = document.getElementById("arisu-dance");
+let toast_notification = document.getElementsByClassName("toast-notification")[0];
+let toast_msg_h1 = document.getElementById("toast-msg-h1");
 
 // NavMenu
 function showMenu(){
@@ -35,10 +37,42 @@ function checkScreenWidth(){
 }
 checkScreenWidth();
 
+// Toast
+var toast_RemainingTime = 0;
+var toast_Interval;
+function toast_Show(toast_msg_H1 = ""){
+    clearInterval(toast_Interval);
+    toast_msg_h1.textContent = toast_msg_H1;
+    toast_notification.style.bottom = "0";
+    toast_RemainingTime = 3
+    toast_Interval = setInterval(function (){
+        if (toast_RemainingTime > 0) toast_RemainingTime--;
+        else{
+            clearInterval(toast_Interval);
+            toast_Hide();
+        }
+    }, 1000);
+}
+function toast_Hide(){
+    //toast_msg_h1.textContent = "";
+    toast_notification.style.bottom = "-20%";
+}
 
+// CTRL-zoom Warning
+document.body.addEventListener("wheel", e=>{
+    if(e.ctrlKey){
+        function fetchdata(callback){
+            setTimeout(()=>{callback(Math.round(100 * window.devicePixelRatio));}, 10);
+        }
+        fetchdata(result =>{
+            toast_Show(`The Best scale is 100. Now is ${result}`);
+        });     
+    }
+});
+
+// Scroll
 var idNavRaruu_link_fontsize = parseInt(window.getComputedStyle(idNavRaruu_link).fontSize);
 var idNavRaruu_img_width = idNavRaruu_img.getBoundingClientRect().width;
-// Scroll
 window.addEventListener('scroll', () =>{
     var navScrolled = clamp(window.scrollY / 800, 0, 1);
     if(!mobileMode){
@@ -92,7 +126,7 @@ function parallax_cloud_array(){
 parallax_cloud_array();
 
 // Parallax-Scroll
-var aboutme_ShowAtPosition = 1000 / window.devicePixelRatio;
+var aboutme_ShowAtPosition = !mobileMode ? 1000 / window.devicePixelRatio : 1000;
 window.addEventListener('scroll', homeTextBox_Scroll);
 function homeTextBox_Scroll(param = '0'){
     if(param == '1'){
@@ -118,7 +152,6 @@ function homeTextBox_Scroll(param = '0'){
 
 // Aboutme
 var aboutme_ScrollYValue;
-
 refAboutme_Background.addEventListener('transitionend', () => {
     if(aboutme_ScrollYValue < aboutme_ShowAtPosition){
         refAboutme.style.pointerEvents = "none";
@@ -155,9 +188,8 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// UwU
 window.addEventListener('click', () =>{
     if(video_arisu_dance.paused && window.scrollY >= 100) video_arisu_dance.play();
     
 });
-console.log("Inner Hegiht:" +window.innerHeight);
-console.log(1/window.devicePixelRatio);
