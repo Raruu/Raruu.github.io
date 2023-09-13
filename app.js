@@ -3,17 +3,17 @@ function clamp(number, min, max){
 }
 // VARIABLE
 var mobileMode = false;
-let refAboutme = document.getElementById("refAboutme");
-let refAboutme_Background = document.getElementById("refAboutme-background");
-let homeTextBox = document.getElementsByClassName("home-text-box")[0];
-let navLinks = document.getElementById("navLinks");
-let idNavRaruu_img = document.getElementById("idNavRaruu_img");
-let idNavRaruu_link = document.getElementById("idNavRaruu_link");
-let parallax_container = document.getElementsByClassName("parallax")[0];
-let navSocialLinks = document.getElementById("nav-social-links");
-let video_arisu_dance = document.getElementById("arisu-dance");
-let toast_notification = document.getElementsByClassName("toast-notification")[0];
-let toast_msg_h1 = document.getElementById("toast-msg-h1");
+const refAboutme = document.getElementById("refAboutme");
+const refAboutme_Background = document.getElementById("refAboutme-background");
+const homeTextBox = document.getElementsByClassName("home-text-box")[0];
+const navLinks = document.getElementById("navLinks");
+const idNavRaruu_img = document.getElementById("idNavRaruu_img");
+const idNavRaruu_link = document.getElementById("idNavRaruu_link");
+const parallax_container = document.getElementsByClassName("parallax")[0];
+const navSocialLinks = document.getElementById("nav-social-links");
+const video_arisu_dance = document.getElementById("arisu-dance");
+const toast_notification = document.getElementsByClassName("toast-notification")[0];
+const toast_msg_h1 = document.getElementById("toast-msg-h1");
 
 // NavMenu
 function showMenu(){
