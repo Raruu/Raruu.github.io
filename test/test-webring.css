@@ -29,14 +29,16 @@
 }
 .the-ring{
     position: absolute;
-    left: 50%;
-    top: 50%;
     transform: translate(-50%, -50%);
     border-radius: 50%;
     border: 6px solid black;
     height: 50%;
     width: 50%;
     z-index: 2;
+    animation: ring_rotate 10s linear infinite;
+}
+.the-ring:hover{
+    animation-play-state: paused;
 }
 .the-ring ul li{
     list-style: none;
@@ -49,7 +51,14 @@
 .the-ring ul li a{
     text-decoration: none;
     color: rgb(186, 180, 180);
+    font-size: 100px;
 }
-.the-ring .fa-brands{
-    
+
+@keyframes ring_rotate {
+    0%{
+        transform: rotate(0deg);
+    }    
+    100%{
+        transform: rotate(360deg);
+    }
 }
