@@ -35,7 +35,7 @@
     height: 50%;
     width: 50%;
     z-index: 2;
-    animation: ring_rotate 10s linear infinite;
+    animation: ring_rotate 20s linear infinite;
 }
 .the-ring:hover{
     animation-play-state: paused;

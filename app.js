@@ -3,17 +3,19 @@ function clamp(number, min, max){
 }
 // VARIABLE
 var mobileMode = false;
-const refAboutme = document.getElementById("refAboutme");
-const refAboutme_Background = document.getElementById("refAboutme-background");
+const refAboutme = document.getElementsByClassName("refAboutme")[0];
+const refAboutme_Background = document.getElementsByClassName("refAboutme-background")[0];
 const homeTextBox = document.getElementsByClassName("home-text-box")[0];
 const navLinks = document.getElementById("navLinks");
 const idNavRaruu_img = document.getElementById("idNavRaruu_img");
 const idNavRaruu_link = document.getElementById("idNavRaruu_link");
 const parallax_container = document.getElementsByClassName("parallax")[0];
 const navSocialLinks = document.getElementById("nav-social-links");
-const video_arisu_dance = document.getElementById("arisu-dance");
 const toast_notification = document.getElementsByClassName("toast-notification")[0];
 const toast_msg_h1 = document.getElementById("toast-msg-h1");
+const aboutme_General = document.getElementsByClassName("aboutme-general")[0];
+const flipCard = document.getElementsByClassName("flip-card")[0];
+const flipCard_Inner = document.getElementsByClassName("flip-card-inner")[0];
 
 // NavMenu
 function showMenu(){
@@ -158,7 +160,7 @@ refAboutme_Background.addEventListener('transitionend', () => {
         refAboutme.style.opacity = "0%"; 
     }
     if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){  
-        video_arisu_dance.muted = false;
+        //video_arisu_dance.muted = false;
     }
 });
 window.addEventListener('scroll', () => {
@@ -170,7 +172,7 @@ window.addEventListener('scroll', () => {
         refAboutme.style.opacity = "100%"; 
         refAboutme_Background.style.backdropFilter = "blur(32px)";
         refAboutme_Background.style.boxShadow = "0px 0px 15px black";
-        refAboutme_Background.style.width = "90%";
+        refAboutme_Background.style.width = "40%";
         setSelectedNav(2);
         navSocialLinks.style.zIndex = 1;
         navSocialLinks.style.opacity = "100%";        
@@ -184,12 +186,24 @@ window.addEventListener('scroll', () => {
         setSelectedNav(1);
         navSocialLinks.style.zIndex = -1;
         navSocialLinks.style.opacity = "0%";
-        video_arisu_dance.muted = true;
+        //video_arisu_dance.muted = true;
     }
 });
 
-// UwU
-window.addEventListener('click', () =>{
-    if(video_arisu_dance.paused && window.scrollY >= 100) video_arisu_dance.play();
-    
-});
+// Aboutme-card
+const aboutme_General_textOrigin = [aboutme_General.children[0].textContent, aboutme_General.children[1].textContent];
+const aboutme_General_textAlternate = ["Widi", "Polynema student"];
+
+function flipCard_onClick(){
+    if(flipCard_Inner.style.transform != ``){
+        flipCard_Inner.style.transform = ``;
+        aboutme_General.children[0].textContent = aboutme_General_textOrigin[0];
+        aboutme_General.children[1].textContent = aboutme_General_textOrigin[1];
+
+    } else{
+        flipCard_Inner.style.transform = `rotateY(180deg)`;
+        aboutme_General.children[0].textContent = aboutme_General_textAlternate[0];
+        aboutme_General.children[1].textContent = aboutme_General_textAlternate[1];
+    }
+}
+
