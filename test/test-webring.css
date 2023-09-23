@@ -1,0 +1,64 @@
+*{
+    padding: 0;
+    margin: 0;
+    
+}
+:root{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.first-page{
+    height: 100vh;
+    width: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.display-content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aqua;
+    height: 40%;
+    width: 40%;
+    border-radius: 50%;
+    z-index: 1;
+}
+.the-ring{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 6px solid black;
+    height: 50%;
+    width: 50%;
+    z-index: 2;
+    animation: ring_rotate 20s linear infinite;
+}
+.the-ring:hover{
+    animation-play-state: paused;
+}
+.the-ring ul li{
+    list-style: none;
+    color: red;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.the-ring ul li a{
+    text-decoration: none;
+    color: rgb(186, 180, 180);
+    font-size: 100px;
+}
+
+@keyframes ring_rotate {
+    0%{
+        transform: rotate(0deg);
+    }    
+    100%{
+        transform: rotate(360deg);
+    }
+}

@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     font-family: 'Pangolin', cursive;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     scroll-behavior: smooth;   
     -webkit-text-size-adjust:none;
     -ms-text-size-adjust:100%;
@@ -42,7 +42,7 @@
     left: 50%;
     transform: translate(-50%,0);
     background-color: rgba(255, 255, 255, 0.623);
-    border-radius: 15px 15px 0 0;
+    border-radius: 10px 10px 0 0;
     z-index: 500;
     display: flex;
     align-items: center;
@@ -146,7 +146,7 @@ nav a:hover{
     color: #9bdfff;
 }
 .nav-links{
-    padding-top: 10px;    
+    padding-top: 5px;    
     backdrop-filter: blur(0px);
     box-shadow: 0px 0px 0px rgba(27, 26, 26, 0.2);
     border-radius: 20px;
@@ -299,7 +299,6 @@ nav .material-symbols-outlined{
     background: transparent;
     cursor: pointer;
     transition: 0.5s;
-
 }
 .primary-btn:hover{
     background: white;
@@ -338,7 +337,7 @@ nav .material-symbols-outlined{
 /* Home Cover */
 
 /* About Me*/
-#refAboutme{
+.refAboutme{
     position: relative;
     z-index: 1;
     width: 100%;
@@ -347,12 +346,12 @@ nav .material-symbols-outlined{
     padding: 10px 0px;    
     display: flex;
 }
-#refAboutme-background{
+.refAboutme-background{
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    height: 100vh;
+    height: 40vh;
     width: 0%;
     border-radius: 1%;
     backdrop-filter: blur(64px);
@@ -363,38 +362,83 @@ nav .material-symbols-outlined{
     align-items: center;
     justify-content: space-around;    
     overflow: hidden;
+    /* background-color: rgb(97, 97, 97); */
 }
-#refAboutme-background img{
-    position: relative;
-    max-height: 100%;
-    margin-left: 100px;
+.flip-card{
+    height: 18.5rem;
+    width: 10rem;
+    background-color: transparent;
+    perspective: 1000px;
+    overflow: hidden;
 }
-#refAboutme-background video{
+.flip-card-inner{
     position: relative;
-    max-height: 100%;
-    margin-left: 40px;
+    width: 100%;
+    height: 100%;    
+    display: flex;
+    transition:  0.5s;
+    transform-style: preserve-3d;  
+    user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;     
+    -moz-user-select: none;
 }
-.aboutMe-general{
+/* .flip-card:hover .flip-card-inner{
+    transform: rotateY(180deg);
+} */
+.flip-card-inner img{
     position: relative;
-    top: -225px;
-    left: 60px;
+    max-height: 100%;    
+      
+}
+.pfp-flip-front, .pfp-flip-back{
+    width: 100%;
+    height: 100%;
+    overflow: hidden; 
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    border-radius: 10%;
+      
+}
+.pfp-flip-back{
+    transform: rotateY(180deg);
+}
+
+.aboutme-general{
+    position: relative;    
     align-items: start;
     display: flex;
     flex-direction: column;
+    min-width: 50%;
 }
-.aboutMe-general h1{
+.aboutme-general h1{
     font-size: 3.75rem;
     position: relative;
-    padding-right: 100px;
 }
-.aboutMe-general h2{
+.aboutme-general h2{
     font-size: 1.875rem;
-    position: relative;
-    left: 1%;
+    position: relative;    
     text-align: start;
-    max-width: 70%;
 }
-.aboutMe-general p{
+.aboutme-general #git-stats-language{
+    max-width: 20rem;
+    padding: 10px 0px;
+}
+.aboutme-general #btn-github-flip-card{
+    display: inline-block;
+    text-decoration: none;
+    color: #000000;
+    border: 1px solid #fff;
+    padding: 12px 34px;
+    position: relative;
+    background: white;
+    cursor: pointer;
+    transition: 0.5s;
+    border-radius: 5%;
+}
+.aboutme-general p{
     font-size: 1.25rem;
     position: relative;
     left: 1%;

@@ -1,19 +1,24 @@
 function clamp(number, min, max){
     return Math.max(min, Math.min(number, max));
 }
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 // VARIABLE
 var mobileMode = false;
-let refAboutme = document.getElementById("refAboutme");
-let refAboutme_Background = document.getElementById("refAboutme-background");
-let homeTextBox = document.getElementsByClassName("home-text-box")[0];
-let navLinks = document.getElementById("navLinks");
-let idNavRaruu_img = document.getElementById("idNavRaruu_img");
-let idNavRaruu_link = document.getElementById("idNavRaruu_link");
-let parallax_container = document.getElementsByClassName("parallax")[0];
-let navSocialLinks = document.getElementById("nav-social-links");
-let video_arisu_dance = document.getElementById("arisu-dance");
-let toast_notification = document.getElementsByClassName("toast-notification")[0];
-let toast_msg_h1 = document.getElementById("toast-msg-h1");
+const refAboutme = document.getElementsByClassName("refAboutme")[0];
+const refAboutme_Background = document.getElementsByClassName("refAboutme-background")[0];
+const homeTextBox = document.getElementsByClassName("home-text-box")[0];
+const navLinks = document.getElementById("navLinks");
+const idNavRaruu_img = document.getElementById("idNavRaruu_img");
+const idNavRaruu_link = document.getElementById("idNavRaruu_link");
+const parallax_container = document.getElementsByClassName("parallax")[0];
+const navSocialLinks = document.getElementById("nav-social-links");
+const toast_notification = document.getElementsByClassName("toast-notification")[0];
+const toast_msg_h1 = document.getElementById("toast-msg-h1");
+const aboutme_General = document.getElementsByClassName("aboutme-general")[0];
+const flipCard = document.getElementsByClassName("flip-card")[0];
+const flipCard_Inner = document.getElementsByClassName("flip-card-inner")[0];
 
 // NavMenu
 function showMenu(){
@@ -158,7 +163,7 @@ refAboutme_Background.addEventListener('transitionend', () => {
         refAboutme.style.opacity = "0%"; 
     }
     if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){  
-        video_arisu_dance.muted = false;
+        //video_arisu_dance.muted = false;
     }
 });
 window.addEventListener('scroll', () => {
@@ -170,7 +175,7 @@ window.addEventListener('scroll', () => {
         refAboutme.style.opacity = "100%"; 
         refAboutme_Background.style.backdropFilter = "blur(32px)";
         refAboutme_Background.style.boxShadow = "0px 0px 15px black";
-        refAboutme_Background.style.width = "90%";
+        refAboutme_Background.style.width = "40%";
         setSelectedNav(2);
         navSocialLinks.style.zIndex = 1;
         navSocialLinks.style.opacity = "100%";        
@@ -184,12 +189,56 @@ window.addEventListener('scroll', () => {
         setSelectedNav(1);
         navSocialLinks.style.zIndex = -1;
         navSocialLinks.style.opacity = "0%";
-        video_arisu_dance.muted = true;
+        //video_arisu_dance.muted = true;
     }
 });
 
-// UwU
-window.addEventListener('click', () =>{
-    if(video_arisu_dance.paused && window.scrollY >= 100) video_arisu_dance.play();
-    
-});
+// Aboutme-card
+const aboutme_General_textOrigin = [aboutme_General.children[0].textContent, aboutme_General.children[1].textContent];
+const aboutme_General_textAlternate = ["Widi", "Polynema student"];
+var flipCard_isFinish = true;
+
+async function setText_Typing(interval = 100, originText ="", nextText="", callback){ 
+    let sumLength = originText.length + nextText.length;
+    let timeDel = (nextText.length / sumLength) * interval;
+    let timeType = (originText.length / sumLength) * interval;
+    for(var i = -1; i > -1*originText.length; i--){
+        callback(originText.slice(0, i));        
+        await sleep(timeDel);
+    }
+    for(var i = 1; i <= nextText.length; i++){
+        callback(nextText.slice(0, i));
+        await sleep(timeType);
+    }    
+}
+
+function flipCard_onClick(){
+    if(!flipCard_isFinish){
+        event.preventDefault();
+        return;
+    }
+    flipCard_isFinish = false;
+    const interval = 50;
+    if(flipCard_Inner.style.transform != ``){
+        flipCard_Inner.style.transform = ``;
+        // H1
+        setText_Typing(interval, aboutme_General_textAlternate[0],aboutme_General_textOrigin[0], result => {aboutme_General.children[0].textContent = result;});        
+        // H2
+        setText_Typing(interval, aboutme_General_textAlternate[1],aboutme_General_textOrigin[1], result => {aboutme_General.children[1].textContent = result;});
+
+    } else{
+        flipCard_Inner.style.transform = `rotateY(180deg)`;
+        // H1
+        setText_Typing(interval,aboutme_General_textOrigin[0], aboutme_General_textAlternate[0], result => {aboutme_General.children[0].textContent = result;});        
+        // H2
+        setText_Typing(interval,aboutme_General_textOrigin[1], aboutme_General_textAlternate[1], result => {aboutme_General.children[1].textContent = result;});
+        
+    }
+    flipCard_isFinish = true;
+}
+
+// setTimeout(()=>{
+//     for(i = 0; i<10;){
+//         {console.log("a");
+//     }
+//     }}, 4000);
