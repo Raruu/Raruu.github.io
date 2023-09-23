@@ -1,6 +1,9 @@
 function clamp(number, min, max){
     return Math.max(min, Math.min(number, max));
 }
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
 // VARIABLE
 var mobileMode = false;
 const refAboutme = document.getElementsByClassName("refAboutme")[0];
@@ -193,17 +196,49 @@ window.addEventListener('scroll', () => {
 // Aboutme-card
 const aboutme_General_textOrigin = [aboutme_General.children[0].textContent, aboutme_General.children[1].textContent];
 const aboutme_General_textAlternate = ["Widi", "Polynema student"];
+var flipCard_isFinish = true;
+
+async function setText_Typing(interval = 100, originText ="", nextText="", callback){ 
+    let sumLength = originText.length + nextText.length;
+    let timeDel = (nextText.length / sumLength) * interval;
+    let timeType = (originText.length / sumLength) * interval;
+    for(var i = -1; i > -1*originText.length; i--){
+        callback(originText.slice(0, i));        
+        await sleep(timeDel);
+    }
+    for(var i = 1; i <= nextText.length; i++){
+        callback(nextText.slice(0, i));
+        await sleep(timeType);
+    }    
+}
 
 function flipCard_onClick(){
+    if(!flipCard_isFinish){
+        event.preventDefault();
+        return;
+    }
+    flipCard_isFinish = false;
+    const interval = 50;
     if(flipCard_Inner.style.transform != ``){
         flipCard_Inner.style.transform = ``;
-        aboutme_General.children[0].textContent = aboutme_General_textOrigin[0];
-        aboutme_General.children[1].textContent = aboutme_General_textOrigin[1];
+        // H1
+        setText_Typing(interval, aboutme_General_textAlternate[0],aboutme_General_textOrigin[0], result => {aboutme_General.children[0].textContent = result;});        
+        // H2
+        setText_Typing(interval, aboutme_General_textAlternate[1],aboutme_General_textOrigin[1], result => {aboutme_General.children[1].textContent = result;});
 
     } else{
         flipCard_Inner.style.transform = `rotateY(180deg)`;
-        aboutme_General.children[0].textContent = aboutme_General_textAlternate[0];
-        aboutme_General.children[1].textContent = aboutme_General_textAlternate[1];
+        // H1
+        setText_Typing(interval,aboutme_General_textOrigin[0], aboutme_General_textAlternate[0], result => {aboutme_General.children[0].textContent = result;});        
+        // H2
+        setText_Typing(interval,aboutme_General_textOrigin[1], aboutme_General_textAlternate[1], result => {aboutme_General.children[1].textContent = result;});
+        
     }
+    flipCard_isFinish = true;
 }
 
+// setTimeout(()=>{
+//     for(i = 0; i<10;){
+//         {console.log("a");
+//     }
+//     }}, 4000);
