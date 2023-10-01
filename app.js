@@ -119,10 +119,10 @@ function parallax_cloud_array(){
     var rotated = false;
     for(var i = 0; i < 2; i++){
         var img = document.createElement('img');
-        img.src = "Img/cloud.png";
+        img.src = "Img/short_cloud.png";
         if(rotated){
             img.style.rotate = "180deg";
-            img.style.transform = "scale(-1, 1)";
+            img.style.transform = "scale(-1, 1) translate(0px, 10px)";
             rotated = false;
         }else {rotated = true;}
         parallax_container.appendChild(img);
@@ -131,7 +131,8 @@ function parallax_cloud_array(){
 parallax_cloud_array();
 
 // Parallax-Scroll
-var aboutme_ShowAtPosition = !mobileMode ? 1000 / window.devicePixelRatio : 1000;
+var aboutme_ShowAtPosition = !mobileMode ? 850 / window.devicePixelRatio : 600;
+console.log(window.devicePixelRatio);
 window.addEventListener('scroll', homeTextBox_Scroll);
 function homeTextBox_Scroll(param = '0'){
     if(param == '1'){
