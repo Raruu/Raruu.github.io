@@ -121,7 +121,7 @@
 .refHeader{
     width: 100%;    
     position: fixed;
-    z-index: 10;
+    z-index: 500;
     overflow: hidden;
 }
 .refHeader nav{
@@ -146,7 +146,7 @@ nav a:hover{
     color: #9bdfff;
 }
 .nav-links{
-    padding-top: 5px;    
+    padding: 9px 0px 3px 0px;    
     backdrop-filter: blur(0px);
     box-shadow: 0px 0px 0px rgba(27, 26, 26, 0.2);
     border-radius: 20px;
@@ -248,7 +248,7 @@ nav .material-symbols-outlined{
         top: 0;
         right: -200px;
         text-align: left;
-        z-index: 100;
+        z-index: 500;
         transition: 0.5s;
         border-radius: 0px;
         margin-top: 0px;
@@ -286,7 +286,7 @@ nav .material-symbols-outlined{
     min-height: 100vh;
     text-align: center;
     overflow: hidden;
-    background-color: #051e3f;
+    background-color: #000000;
     color: #fff;
 }
 .primary-btn{
@@ -339,7 +339,7 @@ nav .material-symbols-outlined{
 /* About Me*/
 .refAboutme{
     position: relative;
-    z-index: 1;
+    z-index: 100;
     width: 100%;
     pointer-events: none;
     height: 100vh;
@@ -356,8 +356,7 @@ nav .material-symbols-outlined{
     border-radius: 1%;
     backdrop-filter: blur(64px);
     box-shadow: 0px 0px 0px black;
-    transition: 0.5s;
-    z-index: 3;
+    transition: 0.5s;    
     display: flex;
     align-items: center;
     justify-content: space-around;    
@@ -490,7 +489,7 @@ nav .material-symbols-outlined{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 0;
+    z-index: 10;
 }
 .parallax img{
     position: relative;
@@ -502,6 +501,87 @@ nav .material-symbols-outlined{
     }
 }
 /* Parallax */
+
+/* Star field */
+.star-field{
+    width: 2px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    animation: star_moving 14s ease-in-out infinite;
+}
+/* Star field */
+
+
+/* social-ring */
+.ring-space{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 350px;
+    z-index: 100;
+}
+.ring-space .social-ring{
+    height: 100vh;
+    width: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social-ring .the-ring{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    /* border: 6px solid black; */
+    height: 50%;
+    width: 50%;
+    z-index: 2;
+    animation: ring_rotate 20s linear infinite;
+}
+/* .social-ring img{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%; 
+    height: 75%;
+    animation: bg_ring_rotate 100s linear infinite; 
+} */
+.the-ring img{
+    position: absolute;
+    /* transform: translate(-50%,-50%); */
+    top: -25%;
+    left: -25%; 
+    height: 150%;
+    animation: bg_ring_rotate 40s linear infinite;
+    pointer-events: none;
+    animation-play-state: inherit;
+}
+.social-ring .the-ring:hover{
+    animation-play-state: paused;
+}
+.social-ring .the-ring ul li{
+    list-style: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.social-ring .the-ring ul li a{
+    text-decoration: none;
+    /* color: rgb(186, 180, 180); */
+    font-size: 100px;
+}
+.social-ring .the-ring ul li a:hover{
+    /* color: ""; */
+}
+
+/* social-ring */
 
 /* Footer */
 .footer{
@@ -607,4 +687,37 @@ nav .material-symbols-outlined{
       transform: translateX(-100%);
     }
   }
+@keyframes ring_rotate {
+    0%{
+        transform: rotate(0deg);
+    }    
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes bg_ring_rotate {
+    0%{
+        transform: rotate(360deg);
+    }    
+    100%{
+        transform: rotate(0deg);
+    }
+}
+@keyframes star_moving {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(-700%,-700%);
+    }    
+    50%{
+        transform: translate(700%,700%);
+    }
+    75%{
+        transform: translate(-700%,-700%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
 /* Keyframes */
