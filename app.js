@@ -142,12 +142,14 @@ parallax_cloud_array();
 
 // Star field
 function bgStar_Field(){
-    for(var i = 0; i <= 1000; i++){
+    for(var i = 0; i <= 500; i++){
         let star = document.createElement("div");
         star.className = "star-field";
         let ranXY = getRandomPosition_Pagebody();
         star.style.left = `${ranXY[0]}px`;
-        star.style.top = `${(ranXY[1] / 2) + (window.innerHeight * 2)}px`;
+        star.style.top = `${(ranXY[1] / 2.15) + (window.innerHeight * 2)}px`;
+        star.style.animation = `star_moving_${Math.floor(Math.random() * 4)} 14s ease-in-out infinite, 
+                                star_fadeinout ${clamp(Math.random() * 15, 2, 15)}s ease-in-out infinite`;
         sec_body.appendChild(star);
     }
 }
@@ -278,22 +280,26 @@ const radius = 100;
 const numberOfPoints = 360; 
 const circlePoints = generateCirclePoints(radius, numberOfPoints);
 const ring_List = document.getElementById("ring-list");
-
 const itemsGap_ring_List = AbsRound(360 / ring_List.children.length) - 1;
-for(var i = 0; i < ring_List.children.length; i++){
-    if(circlePoints[itemsGap_ring_List*i].x < 0){
-        ring_List.children[i].style.paddingRight = `${AbsRound(circlePoints[itemsGap_ring_List*i].x)}%`;
-    }else{
-        ring_List.children[i].style.paddingLeft = `${AbsRound(circlePoints[itemsGap_ring_List*i].x)}%`;
-    }
-    console.log(`X[${i}]: ${circlePoints[itemsGap_ring_List*i].x}`);
-    
-    if(circlePoints[itemsGap_ring_List*i].y < 0){
-        ring_List.children[i].style.paddingBottom = `${AbsRound(circlePoints[itemsGap_ring_List*i].y)}%`;
-    }else{
-        ring_List.children[i].style.paddingTop = `${AbsRound(circlePoints[itemsGap_ring_List*i].y)}%`;
-    }
 
-    ring_List.children[i].children[0].style.transform = `rotate(${(itemsGap_ring_List+1)*(i+1)}deg)`;
-    console.log(`Y[${i}]: ${circlePoints[itemsGap_ring_List*i].y}`);
+function setRing_List(){
+    for(var i = 0; i < ring_List.children.length; i++){
+        if(circlePoints[itemsGap_ring_List*i].x < 0){
+            ring_List.children[i].style.paddingRight = `${AbsRound(circlePoints[itemsGap_ring_List*i].x)}%`;
+        }else{
+            ring_List.children[i].style.paddingLeft = `${AbsRound(circlePoints[itemsGap_ring_List*i].x)}%`;
+        }
+        console.log(`X[${i}]: ${circlePoints[itemsGap_ring_List*i].x}`);
+        
+        if(circlePoints[itemsGap_ring_List*i].y < 0){
+            ring_List.children[i].style.paddingBottom = `${AbsRound(circlePoints[itemsGap_ring_List*i].y)}%`;
+        }else{
+            ring_List.children[i].style.paddingTop = `${AbsRound(circlePoints[itemsGap_ring_List*i].y)}%`;
+        }
+    
+        ring_List.children[i].children[0].style.transform = `rotate(${(itemsGap_ring_List+1)*(i+1)}deg)`;
+        console.log(`Y[${i}]: ${circlePoints[itemsGap_ring_List*i].y}`);
+    }
 }
+setRing_List();
+

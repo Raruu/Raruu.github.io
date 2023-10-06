@@ -510,7 +510,7 @@ nav .material-symbols-outlined{
     position: absolute;
     border-radius: 50%;
     z-index: 0;
-    animation: star_moving 14s ease-in-out infinite;
+    animation: star_moving_1 14s ease-in-out infinite;
 }
 /* Star field */
 
@@ -541,7 +541,6 @@ nav .material-symbols-outlined{
     /* border: 6px solid black; */
     height: 50%;
     width: 50%;
-    z-index: 2;
     animation: ring_rotate 20s linear infinite;
 }
 /* .social-ring img{
@@ -571,16 +570,34 @@ nav .material-symbols-outlined{
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    pointer-events: none;
 }
 .social-ring .the-ring ul li a{
     text-decoration: none;
     /* color: rgb(186, 180, 180); */
     font-size: 100px;
+    position: relative;
+    pointer-events: visible;
 }
 .social-ring .the-ring ul li a:hover{
-    /* color: ""; */
+    color: #9bdfff;
 }
-
+.social-ring .the-ring ul li:nth-child(1) a:hover{
+    color: orangered;
+}
+.social-ring .the-ringul li:nth-child(2) a:hover{
+    color: white;
+}
+.social-ring .the-ring ul li:nth-child(3) a:hover{
+    color: red;
+}
+.social-ring .the-ring ul li:nth-child(4) a:hover{
+    color: blue;
+}
+.social-ring .the-ring .fa-brands{
+    color: #fff;
+    mix-blend-mode: difference;
+}
 /* social-ring */
 
 /* Footer */
@@ -703,7 +720,7 @@ nav .material-symbols-outlined{
         transform: rotate(0deg);
     }
 }
-@keyframes star_moving {
+@keyframes star_moving_0 {
     0%{
         transform: translate(0%,0%);
     }
@@ -718,6 +735,68 @@ nav .material-symbols-outlined{
     } 
     100%{
         transform: translate(0%,0%);
+    }
+}
+@keyframes star_moving_1 {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(700%,700%);
+    }    
+    50%{
+        transform: translate(-700%,-700%);
+    }
+    75%{
+        transform: translate(700%,700%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+@keyframes star_moving_2 {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(1400%,1400%);
+    }    
+    50%{
+        transform: translate(-1400%,-1400%);
+    }
+    75%{
+        transform: translate(1400%,1400%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+@keyframes star_moving_3 {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(-1400%,-1400%);
+    }    
+    50%{
+        transform: translate(1400%,1400%);
+    }
+    75%{
+        transform: translate(-1400%,-1400%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+@keyframes star_fadeinout {
+    0%{
+        opacity: 100%;
+    }   
+    50%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
     }
 }
 /* Keyframes */
