@@ -303,3 +303,20 @@ function setRing_List(){
 }
 setRing_List();
 
+const ring_IconContainer =  document.getElementsByClassName("ring-icon-container")[0];
+const ring_IconLink = ring_IconContainer.children[0];
+const ring_CaptionH1 = document.getElementById("ring-caption-h1");
+const ring_CaptionP = document.getElementById("ring-caption-p");
+
+function hoverRing_List(x){
+    // ring_IconContainer.style.width = "100%";
+    // ring_IconContainer.style.height = "100%";
+    ring_IconLink.className = x.className;
+    ring_IconLink.href = x.href;
+    ring_CaptionH1.textContent = x.children[0].textContent;
+    ring_CaptionP.textContent = x.children[1].textContent;
+}
+function hoverRing_List_Leave(){
+    ring_IconContainer.style.width = "0%";
+    ring_IconContainer.style.height = "0%";
+}

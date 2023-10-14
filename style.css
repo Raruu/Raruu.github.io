@@ -199,6 +199,7 @@ nav a:hover{
     margin: 0px;
     font-size: 25px; 
     mix-blend-mode: difference;
+    color: #fff;
 }
 #nav-social-links ul li a{
     text-decoration: none;
@@ -387,7 +388,11 @@ nav .material-symbols-outlined{
     transform: rotateY(180deg);
 } */
 .flip-card-inner img{
-    position: relative;
+    /* position: relative; */
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
     max-height: 100%;    
       
 }
@@ -538,19 +543,11 @@ nav .material-symbols-outlined{
     position: absolute;
     transform: translate(-50%, -50%);
     border-radius: 50%;
-    /* border: 6px solid black; */
-    height: 50%;
-    width: 50%;
+    /* border: 6px solid white; */
+    height: 70%;
+    width: 70%;
     animation: ring_rotate 20s linear infinite;
 }
-/* .social-ring img{
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%; 
-    height: 75%;
-    animation: bg_ring_rotate 100s linear infinite; 
-} */
 .the-ring img{
     position: absolute;
     /* transform: translate(-50%,-50%); */
@@ -578,6 +575,13 @@ nav .material-symbols-outlined{
     font-size: 100px;
     position: relative;
     pointer-events: visible;
+    transition: 0.5s;
+}
+.social-ring .the-ring ul li a h1{
+    font-size: 0px;
+    width: 0%;
+    height: 0%;
+    z-index: -1;
 }
 .social-ring .the-ring ul li a:hover{
     color: #9bdfff;
@@ -592,13 +596,72 @@ nav .material-symbols-outlined{
     color: red;
 }
 .social-ring .the-ring ul li:nth-child(4) a:hover{
-    color: blue;
+    color: rgb(74, 160, 240);
 }
 .social-ring .the-ring .fa-brands{
     color: #fff;
     mix-blend-mode: difference;
 }
 /* social-ring */
+
+/* social-ring content */
+.ring-content{
+    position: relative;
+    /* background-color: white; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(32px);
+    border-radius: 50%;
+    width: 60%;
+    height: 60%;
+    box-shadow: 0 0 10px 10px black inset;
+}
+.ring-icon-container{
+    position: relative;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+.ring-icon-container a{
+    position: relative;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 100px;
+    position: relative;
+    pointer-events: visible;
+    margin-top: 140px;
+    transition: 0.5s;
+}
+.ring-content .ring-caption{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ring-caption h1{
+    position: relative;
+    font-size: 1.5rem;
+    margin: 20px;
+}
+.ring-caption p{
+    position: relative;
+    font-size: 1rem;
+}
+.ring-content #line{
+    background-color: black;
+    position: absolute;
+    position: relative;
+    width: 90%;
+    height: 1%;
+}
+/* social-ring content */
 
 /* Footer */
 .footer{
