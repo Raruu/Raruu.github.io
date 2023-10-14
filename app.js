@@ -124,17 +124,22 @@ function setSelectedNav(index = 1){
 }
 setSelectedNav();
 
-// Parallax
+// Parallax - Sky
 function parallax_cloud_array(){
     var rotated = false;
-    for(var i = 0; i < 2; i++){
+    var iEnd = 2;
+    if(mobileMode) iEnd = 4;
+    for(var i = 0; i < iEnd; i++){
         var img = document.createElement('img');
         img.src = "Img/short_cloud.png";
         if(rotated){
             img.style.rotate = "180deg";
             img.style.transform = "scale(-1, 1) translate(0px, 10px)";
             rotated = false;
-        }else {rotated = true;}
+        }else {
+            rotated = true;
+            if(mobileMode) img.style.marginTop = "-120px";
+        }
         parallax_container.appendChild(img);
     } 
 }
