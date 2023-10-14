@@ -4,8 +4,18 @@ function clamp(number, min, max){
 function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
+function AbsRound(x){
+    return Math.round(Math.abs(x));
+}
+function getRandomPosition_Pagebody(){
+    return [Math.floor(Math.random() * document.body.scrollWidth),
+         Math.floor(Math.random() * document.body.scrollHeight)];
+}
+console.log(document.body.scrollHeight);
+
 // VARIABLE
 var mobileMode = false;
+const sec_body = document.getElementsByClassName("body")[0];
 const refAboutme = document.getElementsByClassName("refAboutme")[0];
 const refAboutme_Background = document.getElementsByClassName("refAboutme-background")[0];
 const homeTextBox = document.getElementsByClassName("home-text-box")[0];
@@ -63,7 +73,7 @@ function toast_Hide(){
     toast_notification.style.bottom = "-20%";
 }
 
-// CTRL-zoom Warning
+// CTRL-zoom Notification
 document.body.addEventListener("wheel", e=>{
     if(e.ctrlKey){
         function fetchdata(callback){
@@ -119,10 +129,10 @@ function parallax_cloud_array(){
     var rotated = false;
     for(var i = 0; i < 2; i++){
         var img = document.createElement('img');
-        img.src = "Img/cloud.png";
+        img.src = "Img/short_cloud.png";
         if(rotated){
             img.style.rotate = "180deg";
-            img.style.transform = "scale(-1, 1)";
+            img.style.transform = "scale(-1, 1) translate(0px, 10px)";
             rotated = false;
         }else {rotated = true;}
         parallax_container.appendChild(img);
@@ -130,8 +140,24 @@ function parallax_cloud_array(){
 }
 parallax_cloud_array();
 
+// Star field
+function bgStar_Field(){
+    for(var i = 0; i <= 500; i++){
+        let star = document.createElement("div");
+        star.className = "star-field";
+        let ranXY = getRandomPosition_Pagebody();
+        star.style.left = `${ranXY[0]}px`;
+        star.style.top = `${(ranXY[1] / 2.15) + (window.innerHeight * 2)}px`;
+        star.style.animation = `star_moving_${Math.floor(Math.random() * 4)} 14s ease-in-out infinite, 
+                                star_fadeinout ${clamp(Math.random() * 15, 2, 15)}s ease-in-out infinite`;
+        sec_body.appendChild(star);
+    }
+}
+bgStar_Field();
+
 // Parallax-Scroll
-var aboutme_ShowAtPosition = !mobileMode ? 1000 / window.devicePixelRatio : 1000;
+var aboutme_ShowAtPosition = !mobileMode ? 850 / window.devicePixelRatio : 600;
+console.log(window.devicePixelRatio);
 window.addEventListener('scroll', homeTextBox_Scroll);
 function homeTextBox_Scroll(param = '0'){
     if(param == '1'){
@@ -141,7 +167,7 @@ function homeTextBox_Scroll(param = '0'){
     }
     if(param == '2'){
         event.preventDefault(); 
-        window.scrollTo(0, 1000);      
+        window.scrollTo(0, 1250);              
         return;
     }
     var scrollPosition = clamp(window.scrollY, 0, aboutme_ShowAtPosition)
@@ -152,7 +178,7 @@ function homeTextBox_Scroll(param = '0'){
     }
     else {refAboutme_showAt = '-'+clamp(window.scrollY, 0, 800 - (1000-aboutme_ShowAtPosition))+'px';}
     refAboutme.style.marginTop = refAboutme_showAt;
-    console.log(scrollPosition);
+    // console.log(scrollPosition);
 }
 
 // Aboutme
@@ -162,25 +188,25 @@ refAboutme_Background.addEventListener('transitionend', () => {
         refAboutme.style.pointerEvents = "none";
         refAboutme.style.opacity = "0%"; 
     }
-    if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){  
-        //video_arisu_dance.muted = false;
-    }
+    // if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){  
+    //      // window.scrollTo(0, aboutme_ScrollYValue + 400); 
+    // }
 });
 window.addEventListener('scroll', () => {
     aboutme_ScrollYValue = window.scrollY;
     if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){
         homeTextBox.style.transition = "0.5s";
-        homeTextBox.style.opacity = "0%"; 
+        homeTextBox.style.opacity = "50%"; 
         refAboutme.style.pointerEvents = "all";
         refAboutme.style.opacity = "100%"; 
         refAboutme_Background.style.backdropFilter = "blur(32px)";
         refAboutme_Background.style.boxShadow = "0px 0px 15px black";
         refAboutme_Background.style.width = "40%";
         setSelectedNav(2);
-        navSocialLinks.style.zIndex = 1;
+        navSocialLinks.style.zIndex = 500;
         navSocialLinks.style.opacity = "100%";        
     }
-    else if (aboutme_ScrollYValue< aboutme_ShowAtPosition){
+    else if (aboutme_ScrollYValue < aboutme_ShowAtPosition){
         homeTextBox.style.transition = "";
         refAboutme_Background.style.backdropFilter = "blur(0px)";
         refAboutme_Background.style.width = "0%";
@@ -189,7 +215,6 @@ window.addEventListener('scroll', () => {
         setSelectedNav(1);
         navSocialLinks.style.zIndex = -1;
         navSocialLinks.style.opacity = "0%";
-        //video_arisu_dance.muted = true;
     }
 });
 
@@ -237,8 +262,61 @@ function flipCard_onClick(){
     flipCard_isFinish = true;
 }
 
-// setTimeout(()=>{
-//     for(i = 0; i<10;){
-//         {console.log("a");
-//     }
-//     }}, 4000);
+// social-ring
+function generateCirclePoints(radius, numberOfPoints) {
+    const points = [];
+    const angleIncrement = (2 * Math.PI) / numberOfPoints;
+  
+    for (let i = 0; i < numberOfPoints; i++) {
+      const theta = i * angleIncrement;
+      const x = radius * Math.cos(theta);
+      const y = radius * Math.sin(theta);
+      points.push({ x, y });
+    }  
+    return points;
+}  
+
+const radius = 100; 
+const numberOfPoints = 360; 
+const circlePoints = generateCirclePoints(radius, numberOfPoints);
+const ring_List = document.getElementById("ring-list");
+const itemsGap_ring_List = AbsRound(360 / ring_List.children.length) - 1;
+
+function setRing_List(){
+    for(var i = 0; i < ring_List.children.length; i++){
+        if(circlePoints[itemsGap_ring_List*i].x < 0){
+            ring_List.children[i].style.paddingRight = `${AbsRound(circlePoints[itemsGap_ring_List*i].x)}%`;
+        }else{
+            ring_List.children[i].style.paddingLeft = `${AbsRound(circlePoints[itemsGap_ring_List*i].x)}%`;
+        }
+        console.log(`X[${i}]: ${circlePoints[itemsGap_ring_List*i].x}`);
+        
+        if(circlePoints[itemsGap_ring_List*i].y < 0){
+            ring_List.children[i].style.paddingBottom = `${AbsRound(circlePoints[itemsGap_ring_List*i].y)}%`;
+        }else{
+            ring_List.children[i].style.paddingTop = `${AbsRound(circlePoints[itemsGap_ring_List*i].y)}%`;
+        }
+    
+        ring_List.children[i].children[0].style.transform = `rotate(${(itemsGap_ring_List+1)*(i+1)}deg)`;
+        console.log(`Y[${i}]: ${circlePoints[itemsGap_ring_List*i].y}`);
+    }
+}
+setRing_List();
+
+const ring_IconContainer =  document.getElementsByClassName("ring-icon-container")[0];
+const ring_IconLink = ring_IconContainer.children[0];
+const ring_CaptionH1 = document.getElementById("ring-caption-h1");
+const ring_CaptionP = document.getElementById("ring-caption-p");
+
+function hoverRing_List(x){
+    // ring_IconContainer.style.width = "100%";
+    // ring_IconContainer.style.height = "100%";
+    ring_IconLink.className = x.className;
+    ring_IconLink.href = x.href;
+    ring_CaptionH1.textContent = x.children[0].textContent;
+    ring_CaptionP.textContent = x.children[1].textContent;
+}
+function hoverRing_List_Leave(){
+    ring_IconContainer.style.width = "0%";
+    ring_IconContainer.style.height = "0%";
+}

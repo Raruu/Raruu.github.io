@@ -121,7 +121,7 @@
 .refHeader{
     width: 100%;    
     position: fixed;
-    z-index: 10;
+    z-index: 500;
     overflow: hidden;
 }
 .refHeader nav{
@@ -146,7 +146,7 @@ nav a:hover{
     color: #9bdfff;
 }
 .nav-links{
-    padding-top: 5px;    
+    padding: 9px 0px 3px 0px;    
     backdrop-filter: blur(0px);
     box-shadow: 0px 0px 0px rgba(27, 26, 26, 0.2);
     border-radius: 20px;
@@ -199,6 +199,7 @@ nav a:hover{
     margin: 0px;
     font-size: 25px; 
     mix-blend-mode: difference;
+    color: #fff;
 }
 #nav-social-links ul li a{
     text-decoration: none;
@@ -248,7 +249,7 @@ nav .material-symbols-outlined{
         top: 0;
         right: -200px;
         text-align: left;
-        z-index: 100;
+        z-index: 500;
         transition: 0.5s;
         border-radius: 0px;
         margin-top: 0px;
@@ -286,7 +287,7 @@ nav .material-symbols-outlined{
     min-height: 100vh;
     text-align: center;
     overflow: hidden;
-    background-color: #051e3f;
+    background-color: #000000;
     color: #fff;
 }
 .primary-btn{
@@ -339,7 +340,7 @@ nav .material-symbols-outlined{
 /* About Me*/
 .refAboutme{
     position: relative;
-    z-index: 1;
+    z-index: 100;
     width: 100%;
     pointer-events: none;
     height: 100vh;
@@ -356,8 +357,7 @@ nav .material-symbols-outlined{
     border-radius: 1%;
     backdrop-filter: blur(64px);
     box-shadow: 0px 0px 0px black;
-    transition: 0.5s;
-    z-index: 3;
+    transition: 0.5s;    
     display: flex;
     align-items: center;
     justify-content: space-around;    
@@ -388,7 +388,11 @@ nav .material-symbols-outlined{
     transform: rotateY(180deg);
 } */
 .flip-card-inner img{
-    position: relative;
+    /* position: relative; */
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
     max-height: 100%;    
       
 }
@@ -490,7 +494,7 @@ nav .material-symbols-outlined{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 0;
+    z-index: 10;
 }
 .parallax img{
     position: relative;
@@ -502,6 +506,162 @@ nav .material-symbols-outlined{
     }
 }
 /* Parallax */
+
+/* Star field */
+.star-field{
+    width: 2px;
+    height: 2px;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    animation: star_moving_1 14s ease-in-out infinite;
+}
+/* Star field */
+
+
+/* social-ring */
+.ring-space{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 350px;
+    z-index: 100;
+}
+.ring-space .social-ring{
+    height: 100vh;
+    width: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social-ring .the-ring{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    /* border: 6px solid white; */
+    height: 70%;
+    width: 70%;
+    animation: ring_rotate 20s linear infinite;
+}
+.the-ring img{
+    position: absolute;
+    /* transform: translate(-50%,-50%); */
+    top: -25%;
+    left: -25%; 
+    height: 150%;
+    animation: bg_ring_rotate 40s linear infinite;
+    pointer-events: none;
+    animation-play-state: inherit;
+}
+.social-ring .the-ring:hover{
+    animation-play-state: paused;
+}
+.social-ring .the-ring ul li{
+    list-style: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+.social-ring .the-ring ul li a{
+    text-decoration: none;
+    /* color: rgb(186, 180, 180); */
+    font-size: 100px;
+    position: relative;
+    pointer-events: visible;
+    transition: 0.5s;
+}
+.social-ring .the-ring ul li a h1{
+    font-size: 0px;
+    width: 0%;
+    height: 0%;
+    z-index: -1;
+}
+.social-ring .the-ring ul li a:hover{
+    color: #9bdfff;
+}
+.social-ring .the-ring ul li:nth-child(1) a:hover{
+    color: orangered;
+}
+.social-ring .the-ringul li:nth-child(2) a:hover{
+    color: white;
+}
+.social-ring .the-ring ul li:nth-child(3) a:hover{
+    color: red;
+}
+.social-ring .the-ring ul li:nth-child(4) a:hover{
+    color: rgb(74, 160, 240);
+}
+.social-ring .the-ring .fa-brands{
+    color: #fff;
+    mix-blend-mode: difference;
+}
+/* social-ring */
+
+/* social-ring content */
+.ring-content{
+    position: relative;
+    /* background-color: white; */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    backdrop-filter: blur(32px);
+    border-radius: 50%;
+    width: 60%;
+    height: 60%;
+    box-shadow: 0 0 10px 10px black inset;
+}
+.ring-icon-container{
+    position: relative;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+.ring-icon-container a{
+    position: relative;
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 100px;
+    position: relative;
+    pointer-events: visible;
+    margin-top: 140px;
+    transition: 0.5s;
+}
+.ring-content .ring-caption{
+    position: relative;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.ring-caption h1{
+    position: relative;
+    font-size: 1.5rem;
+    margin: 20px;
+}
+.ring-caption p{
+    position: relative;
+    font-size: 1rem;
+}
+.ring-content #line{
+    background-color: black;
+    position: absolute;
+    position: relative;
+    width: 90%;
+    height: 1%;
+}
+/* social-ring content */
 
 /* Footer */
 .footer{
@@ -607,4 +767,99 @@ nav .material-symbols-outlined{
       transform: translateX(-100%);
     }
   }
+@keyframes ring_rotate {
+    0%{
+        transform: rotate(0deg);
+    }    
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes bg_ring_rotate {
+    0%{
+        transform: rotate(360deg);
+    }    
+    100%{
+        transform: rotate(0deg);
+    }
+}
+@keyframes star_moving_0 {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(-700%,-700%);
+    }    
+    50%{
+        transform: translate(700%,700%);
+    }
+    75%{
+        transform: translate(-700%,-700%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+@keyframes star_moving_1 {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(700%,700%);
+    }    
+    50%{
+        transform: translate(-700%,-700%);
+    }
+    75%{
+        transform: translate(700%,700%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+@keyframes star_moving_2 {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(1400%,1400%);
+    }    
+    50%{
+        transform: translate(-1400%,-1400%);
+    }
+    75%{
+        transform: translate(1400%,1400%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+@keyframes star_moving_3 {
+    0%{
+        transform: translate(0%,0%);
+    }
+    25%{
+        transform: translate(-1400%,-1400%);
+    }    
+    50%{
+        transform: translate(1400%,1400%);
+    }
+    75%{
+        transform: translate(-1400%,-1400%);
+    } 
+    100%{
+        transform: translate(0%,0%);
+    }
+}
+@keyframes star_fadeinout {
+    0%{
+        opacity: 100%;
+    }   
+    50%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
+}
 /* Keyframes */
