@@ -172,18 +172,20 @@ function homeTextBox_Scroll(param = '0'){
     }
     if(param == '2'){
         event.preventDefault(); 
-        window.scrollTo(0, 1250);              
+        if(mobileMode) window.scrollTo(0, 750);
+        else window.scrollTo(0, 1250);              
         return;
     }
     var scrollPosition = clamp(window.scrollY, 0, aboutme_ShowAtPosition)
     homeTextBox.style.marginTop = scrollPosition+'px';
+    // AboutMe Position
     var refAboutme_showAt;
     if(mobileMode){
         refAboutme_showAt = '-'+clamp(window.scrollY, 0, 700)+'px';
     }
-    else {refAboutme_showAt = '-'+clamp(window.scrollY, 0, 800 - (1000-aboutme_ShowAtPosition))+'px';}
+    else {refAboutme_showAt = '-'+clamp(window.scrollY, 0, 800 - (1050-aboutme_ShowAtPosition))+'px';}
     refAboutme.style.marginTop = refAboutme_showAt;
-    // console.log(scrollPosition);
+    // console.log("refAboutme_showAt: "+refAboutme_showAt);
 }
 
 // Aboutme
@@ -193,9 +195,6 @@ refAboutme_Background.addEventListener('transitionend', () => {
         refAboutme.style.pointerEvents = "none";
         refAboutme.style.opacity = "0%"; 
     }
-    // if(aboutme_ScrollYValue >= aboutme_ShowAtPosition){  
-    //      // window.scrollTo(0, aboutme_ScrollYValue + 400); 
-    // }
 });
 window.addEventListener('scroll', () => {
     aboutme_ScrollYValue = window.scrollY;
@@ -204,17 +203,20 @@ window.addEventListener('scroll', () => {
         homeTextBox.style.opacity = "50%"; 
         refAboutme.style.pointerEvents = "all";
         refAboutme.style.opacity = "100%"; 
-        refAboutme_Background.style.backdropFilter = "blur(32px)";
+        // refAboutme_Background.style.backdropFilter = "blur(32px)";
         refAboutme_Background.style.boxShadow = "0px 0px 15px black";
-        refAboutme_Background.style.width = "40%";
+        // refAboutme_Background.style.width = "";
+        refAboutme_Background.style.opacity = "100%";
+        console.log("reafajoiwd: "+refAboutme_Background.style.width);
         setSelectedNav(2);
         navSocialLinks.style.zIndex = 500;
         navSocialLinks.style.opacity = "100%";        
     }
     else if (aboutme_ScrollYValue < aboutme_ShowAtPosition){
         homeTextBox.style.transition = "";
-        refAboutme_Background.style.backdropFilter = "blur(0px)";
-        refAboutme_Background.style.width = "0%";
+        // refAboutme_Background.style.backdropFilter = "blur(0px)";
+        // refAboutme_Background.style.width = "0%";
+        refAboutme_Background.style.opacity = "0%";
         refAboutme_Background.style.boxShadow = "0px 0px 0px black";        
         homeTextBox.style.opacity = "100%";
         setSelectedNav(1);

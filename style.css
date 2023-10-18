@@ -352,17 +352,22 @@ nav .material-symbols-outlined{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    height: 40vh;
-    width: 0%;
+    padding: 32px;
     border-radius: 1%;
-    backdrop-filter: blur(64px);
+    /* backdrop-filter: blur(64px); */
     box-shadow: 0px 0px 0px black;
     transition: 0.5s;    
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-around;    
     overflow: hidden;
     /* background-color: rgb(97, 97, 97); */
+}
+@media only screen and (max-width: 700px){
+    .refAboutme-background{
+        flex-direction: column;        
+    }
 }
 .flip-card{
     height: 18.5rem;
@@ -370,6 +375,17 @@ nav .material-symbols-outlined{
     background-color: transparent;
     perspective: 1000px;
     overflow: hidden;
+    padding: 0px 40px 0px 0px;
+}
+@media only screen and (max-width: 700px){
+    .flip-card{
+        height: 18.5rem;
+        width: 10rem;
+        background-color: transparent;
+        perspective: 1000px;
+        overflow: hidden;
+        padding: 0px 0px 40px 0px;
+    }
 }
 .flip-card-inner{
     position: relative;
@@ -592,7 +608,7 @@ nav .material-symbols-outlined{
     font-size: 100px;
     position: relative;
     pointer-events: visible;
-    transition: 0.5s;
+    transition: 0.25s;
 }
 .social-ring .the-ring ul li a h1{
     font-size: 0px;
@@ -679,63 +695,6 @@ nav .material-symbols-outlined{
     height: 1%;
 }
 /* social-ring content */
-
-/* Footer */
-.footer{
-    width: 100%;
-    min-height: 10vh;
-    text-align: center;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(4, 9, 30, 0.2)), url(Img/Raruu.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center bottom;
-    padding: 25px 0px;
-    position: relative;
-}
-.footer .fa-brands{
-    display: block;
-    margin: 10px;
-    font-size: 50px;
-}
-.footer ul li{
-    display: inline-block;
-    position: relative;
-    list-style: none;
-    padding: 0 20px;
-}
-.footer ul li a svg{
-    position: relative;
-    width: 50px;
-    height: 80px;
-}
-.footer ul li a svg:hover{
-    filter: drop-shadow(0 0 5px white) drop-shadow(0 0 2.5px #ff4da6);
-    color: #9bdfff;
-    transition: 0.25s;
-}
-.footer ul li a{
-    text-decoration: none;
-    color: black;
-    padding: 10px 10px;
-    transition: 0.25s;
-}
-.footer ul li a#asvg{
-    padding: 0px 0;
-}
-.footer ul li a:hover{
-    color: #9bdfff;
-    text-shadow:  0 0 20px #fff, 0 0 10px #ff4da6;
-    transition: 0.25s;
-}
-@media only screen and (max-width: 700px){
-    .footer ul li {
-        padding: 0px 10px;
-    }
-    .footer ul li a{
-        padding: 0px 10px;
-    }
-}
-/* Footer */
 
 /* Keyframes */
 @keyframes text_reveal_block {
