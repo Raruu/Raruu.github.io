@@ -7,11 +7,6 @@ function sleep(ms) {
 function AbsRound(x){
     return Math.round(Math.abs(x));
 }
-function getRandomPosition_Pagebody(){
-    return [Math.floor(Math.random() * document.body.scrollWidth),
-         Math.floor(Math.random() * document.body.scrollHeight)];
-}
-console.log(document.body.scrollHeight);
 
 // VARIABLE
 var mobileMode = false;
@@ -88,13 +83,19 @@ document.body.addEventListener("wheel", e=>{
 // Scroll
 var idNavRaruu_link_fontsize = parseInt(window.getComputedStyle(idNavRaruu_link).fontSize);
 var idNavRaruu_img_width = idNavRaruu_img.getBoundingClientRect().width;
+var nav_InvertAt = 2000;
 window.addEventListener('scroll', () =>{
     var navScrolled = clamp(window.scrollY / 800, 0, 1);
     if(!mobileMode){
-        if(window.scrollY > 800){
+        if(window.scrollY > 800 && window.scrollY < nav_InvertAt){
             navLinks.style.backdropFilter = `blur(32px)`;
             navLinks.style.boxShadow = `0px 0px 20px rgba(27, 26, 26, 0.2)`;
+            navLinks.style.filter = "invert(0)";
         }
+        else if(window.scrollY >= nav_InvertAt){
+            navLinks.style.boxShadow = ``;
+            navLinks.style.filter = "invert(1)";            
+        }  
         else {
             navLinks.style.backdropFilter = ``;
             navLinks.style.boxShadow = ``;
@@ -106,14 +107,38 @@ window.addEventListener('scroll', () =>{
 });
 
 // Nav Hover
-var last_Nav_background;
-$('.nav-links').on("mouseenter",function() {
-    if(!mobileMode){
-        last_Nav_background = navLinks.style.getPropertyValue("background-color");
-        if(window.scrollY >= 1000){$(this).css("background-color", "#051e3f");}
-    }    
-});
-$('.nav-links').on("mouseleave",function() {if(!mobileMode)$(this).css("background-color", last_Nav_background)});
+// var last_Nav_background;
+// navLinks.addEventListener("mouseenter",()=>{
+    
+// });
+// navLinks.addEventListener("mouseleave",()=>{
+//     navLinks.style.filter = "";  
+// });
+
+// window.addEventListener("scroll", () =>{
+//     if(window.scrollY < nav_InvertAt){
+//         navLinks.style.filter = "invert(0)";            
+//     }  
+//     if(window.scrollY >= nav_InvertAt){
+//         navLinks.style.filter = "invert(1)";            
+//     }      
+// });
+
+// $('.nav-links').on("mouseenter",function() {
+//     if(!mobileMode){
+//         last_Nav_background = navLinks.style.getPropertyValue("background-color");
+//         if(window.scrollY >= 2000){
+//             // $(this).css("background-color", "#051e3f");
+//             $(this).css("filter", "invert(1)");            
+//         }
+//     }    
+// });
+// $('.nav-links').on("mouseleave",function() {
+//     if(!mobileMode){
+//         // $(this).css("background-color", last_Nav_background)
+//         $(this).css("filter", "invert(0)");       
+//     }
+// });
 
 var lastSelectedNav = 0;
 function setSelectedNav(index = 1){
@@ -141,18 +166,23 @@ function parallax_cloud_array(){
             if(mobileMode) img.style.marginTop = "-120px";
         }
         parallax_container.appendChild(img);
-    } 
+    }     
 }
 parallax_cloud_array();
 
 // Star field
+function getRandomPosition_Pagebody(){
+    return [Math.floor(Math.random() * sec_body.scrollWidth),
+         Math.floor(Math.random() * sec_body.scrollHeight)];
+}
+// const star_Field = document.getElementsByClassName("star-field")[0];
 function bgStar_Field(){
     for(var i = 0; i <= 500; i++){
         let star = document.createElement("div");
-        star.className = "star-field";
+        star.className = "stars";
         let ranXY = getRandomPosition_Pagebody();
         star.style.left = `${ranXY[0]}px`;
-        star.style.top = `${(ranXY[1] / 2.15) + (window.innerHeight * 2)}px`;
+        star.style.top = `${(ranXY[1] / 1.75) + (window.innerHeight * 2)}px`;
         star.style.animation = `star_moving_${Math.floor(Math.random() * 4)} 14s ease-in-out infinite, 
                                 star_fadeinout ${clamp(Math.random() * 15, 2, 15)}s ease-in-out infinite`;
         sec_body.appendChild(star);
@@ -207,7 +237,6 @@ window.addEventListener('scroll', () => {
         refAboutme_Background.style.boxShadow = "0px 0px 15px black";
         // refAboutme_Background.style.width = "";
         refAboutme_Background.style.opacity = "100%";
-        console.log("reafajoiwd: "+refAboutme_Background.style.width);
         setSelectedNav(2);
         navSocialLinks.style.zIndex = 500;
         navSocialLinks.style.opacity = "100%";        
@@ -326,4 +355,8 @@ function hoverRing_List(x){
 function hoverRing_List_Leave(){
     ring_IconContainer.style.width = "0%";
     ring_IconContainer.style.height = "0%";
+}
+// console.log(document.body.scrollWidth);
+window.onload = function() {
+    nav_InvertAt = parseInt(getComputedStyle(parallax_container).getPropertyValue("height")) + (window.innerHeight*0.7);
 }

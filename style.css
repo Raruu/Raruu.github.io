@@ -152,6 +152,7 @@ nav a:hover{
     border-radius: 20px;
     margin: 10px 0px;
     transition: 0.5s;
+    display: flex;
 }
 .nav-links ul{
     margin: 0 10px;
@@ -312,7 +313,7 @@ nav .material-symbols-outlined{
     min-height: 100vh;
     max-height: 100vh;
     background-attachment: fixed;
-    background-image: radial-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.7)), url(Img/IdBackground1.jpg);
+    background-image: radial-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.7)), url(Img/BgHome_Land.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -321,6 +322,11 @@ nav .material-symbols-outlined{
     display: flex;
     flex-direction: column;
     z-index: 0;
+}
+@media only screen and (max-width: 700px){
+    .home-text-box{
+        background-image: radial-gradient(rgba(4, 9, 30, 0.1), rgba(4, 9, 30, 0.7)), url(Img/BgHome_Pot.jpg);
+    }
 }
 .home-text-box h1{
     font-size: 4rem;
@@ -400,9 +406,6 @@ nav .material-symbols-outlined{
     -o-user-select: none;     
     -moz-user-select: none;
 }
-/* .flip-card:hover .flip-card-inner{
-    transform: rotateY(180deg);
-} */
 .flip-card-inner img{
     /* position: relative; */
     position: absolute;
@@ -525,6 +528,15 @@ nav .material-symbols-outlined{
 
 /* Star field */
 .star-field{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    background: red;
+    z-index: 100;
+    height: 100vh;
+}
+.stars{
     width: 2px;
     height: 2px;
     background: white;
@@ -534,7 +546,6 @@ nav .material-symbols-outlined{
     animation: star_moving_1 14s ease-in-out infinite;
 }
 /* Star field */
-
 
 /* social-ring */
 .outer-ring-space{
@@ -640,7 +651,6 @@ nav .material-symbols-outlined{
 /* social-ring content */
 .ring-content{
     position: relative;
-    /* background-color: white; */
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -695,6 +705,35 @@ nav .material-symbols-outlined{
     height: 1%;
 }
 /* social-ring content */
+
+/* Another-works */
+.another-works{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.another-works div{
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 70%;
+}
+.another-works div div{
+    display: block;
+}
+.another-works div div h2{
+    font-size: 3rem;
+}
+.another-works div h1{
+    font-size: 6rem;
+}
+/* Another-works */
 
 /* Keyframes */
 @keyframes text_reveal_block {
